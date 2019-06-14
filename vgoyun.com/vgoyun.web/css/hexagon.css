@@ -1,0 +1,202 @@
+/* support */
+/* 六边形1 */
+.module-con .module-con-provide .support .support-con1{
+    width: 130px;
+    height: 216px;
+    margin:100px auto;
+    background-color: #67bbfb;
+    position: relative;
+    left:60px;
+    top:52px;
+}
+    .module-con .module-con-provide .support .support-con1::before{
+    content:"";
+    width: 0;
+    height: 0;
+    position:absolute;
+    left:-65px;top:0;
+    border-right:65px solid #67bbfb;
+    border-top:108px solid transparent;
+    border-bottom:108px solid transparent;}
+    .module-con .module-con-provide .support .support-con1::after{
+    content:"";
+    width: 0;
+    height: 0;
+    position:absolute;
+    right:-65px;top:0;
+    border-left:65px solid #67bbfb;
+    border-top:108px solid transparent;
+    border-bottom:108px solid transparent;}
+
+/* 六边形2 */
+.module-con .module-con-provide .support .support-con2{
+    width: 130px;
+    height: 216px;
+    margin:100px auto;
+    background-color: #f4ca40;
+    position: relative;
+    left:30px; 
+    top:-65px;
+}
+    .module-con .module-con-provide .support .support-con2::before{
+    content:"";
+    width: 0;
+    height: 0;
+    position:absolute;
+    left:-65px;top:0;
+    border-right:65px solid #f4ca40;
+    border-top:108px solid transparent;
+    border-bottom:108px solid transparent;}
+    .module-con .module-con-provide .support .support-con2::after{
+    content:"";
+    width: 0;
+    height: 0;
+    position:absolute;
+    right:-65px;top:0;
+    border-left:65px solid #f4ca40;
+    border-top:108px solid transparent;
+    border-bottom:108px solid transparent;}
+    /* 六边形3 */
+.module-con .module-con-provide .support .support-con3{
+    width: 130px;
+    height: 216px;
+    margin:100px auto;
+    background-color: #89e463;
+    position: relative;
+    left:30px; 
+    top:-150px;
+}
+    .module-con .module-con-provide .support .support-con3::before{
+    content:"";
+    width: 0;
+    height: 0;
+    position:absolute;
+    left:-65px;top:0;
+    border-right:65px solid #89e463;
+    border-top:108px solid transparent;
+    border-bottom:108px solid transparent;}
+    .module-con .module-con-provide .support .support-con3::after{
+    content:"";
+    width: 0;
+    height: 0;
+    position:absolute;
+    right:-65px;top:0;
+    border-left:65px solid #89e463;
+    border-top:108px solid transparent;
+    border-bottom:108px solid transparent;}
+     /* 六边形4 */
+.module-con .module-con-provide .support .support-con4{
+    width: 130px;
+    height: 216px;
+    margin:100px auto;
+    background-color: #0eae70;
+    position: relative;
+    left:0px;
+    top:49px;  
+}
+    .module-con .module-con-provide .support .support-con4::before{
+    content:"";
+    width: 0;
+    height: 0;
+    position:absolute;
+    left:-65px;top:0;
+    border-right:65px solid #0eae70;
+    border-top:108px solid transparent;
+    border-bottom:108px solid transparent;}
+    .module-con .module-con-provide .support .support-con4::after{
+    content:"";
+    width: 0;
+    height: 0;
+    position:absolute;
+    right:-65px;top:0;
+    border-left:65px solid #0eae70;
+    border-top:108px solid transparent;
+    border-bottom:108px solid transparent;}
+    /* 六边形5 */
+    .module-con .module-con-provide .support .support-con5{
+        width: 130px;
+        height: 216px;
+        margin:100px auto;
+        background-color: #7574fc;
+        position: relative;
+        left:-28px;
+        top:-65px; 
+    }
+        .module-con .module-con-provide .support .support-con5::before{
+        content:"";
+        width: 0;
+        height: 0;
+        position:absolute;
+        left:-65px;top:0;
+        border-right:65px solid #7574fc;
+        border-top:108px solid transparent;
+        border-bottom:108px solid transparent;}
+        .module-con .module-con-provide .support .support-con5::after{
+        content:"";
+        width: 0;
+        height: 0;
+        position:absolute;
+        right:-65px;top:0;
+        border-left:65px solid #7574fc;
+        border-top:108px solid transparent;
+        border-bottom:108px solid transparent;}
+    
+        /* 六边形6 */
+    .module-con .module-con-provide .support .support-con6{
+        width: 130px;
+        height: 216px;
+        margin:100px auto;
+        background-color: #fe7d60;
+        position: relative;
+        right:27px;
+        top:-150px;  
+    }
+        .module-con .module-con-provide .support .support-con6::before{
+        content:"";
+        width: 0;
+        height: 0;
+        position:absolute;
+        left:-65px;top:0;
+        border-right:65px solid #fe7d60;
+        border-top:108px solid transparent;
+        border-bottom:108px solid transparent;}
+        .module-con .module-con-provide .support .support-con6::after{
+        content:"";
+        width: 0;
+        height: 0;
+        position:absolute;
+        right:-65px;top:0;
+        border-left:65px solid #fe7d60;
+        border-top:108px solid transparent;
+        border-bottom:108px solid transparent;}
+            /* 六边形7 */
+    .module-con .module-con-provide .support .support-con7{
+        width: 130px;
+        height: 216px;
+        margin:100px auto;
+        background-color: #30d0b6;
+        position: relative;
+        right:53px;
+        top:52px; 
+    }
+        .module-con .module-con-provide .support .support-con7::before{
+        content:"";
+        width: 0;
+        height: 0;
+        position:absolute;
+        left:-65px;top:0;
+        border-right:65px solid #30d0b6;
+        border-top:108px solid transparent;
+        border-bottom:108px solid transparent;}
+        .module-con .module-con-provide .support .support-con7::after{
+        content:"";
+        width: 0;
+        height: 0;
+        position:absolute;
+        right:-65px;top:0;
+        border-left:65px solid #30d0b6;
+        border-top:108px solid transparent;
+        border-bottom:108px solid transparent;}
+
+
+

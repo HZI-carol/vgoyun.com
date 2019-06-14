@@ -1,0 +1,247 @@
+﻿@{
+    ViewBag.Title = "维构全景 | 全景案例";
+    ViewBag.ActiveMenu = "Case";
+}
+@using Newtonsoft.Json
+
+@section head{
+    <link rel="stylesheet" type="text/css" href="/css/module-qj.css">
+    <script type="text/javascript" src="/js/vue.min.js"></script>
+    <link href="/js/vue-loading-overlay/vue-loading.min.css" rel="stylesheet" />
+    <script src="/js/vue-loading-overlay/vue-loading.min.js"></script>
+    <script src="/js/dateformat.js"></script>
+}
+<!--轮播-->
+<div class="idx_banner1">
+    <div class="idx_video">
+        <!--<div class="video">-->
+        <video autoplay loop width="100%">
+            <source src="/images/module-qj/index1.webm">
+            <source src="/images/module-qj/index2.mp4">
+        </video>
+        <!--</div>-->
+    </div>
+    <a href="javascript:void(0);" id="atr" class="block_d fbh_kslj1 f_s_16 c_white">点击体验<span></span></a>
+    <a href="javascript:void(0);" class="block_d fbh_kslj2 f_s_16 c_white">产品视频<span></span></a>
+</div>
+<!--热门行业-->
+<div class="product-yx-module con1">
+    <div class="wrap">
+        <div class="title">
+            <h1>VR全景热门行业</h1>
+        </div>
+        <div class="al1" v-cloak>
+            <div class="tab-lis">
+                <a href="javascript:;" v-bind:class="{'on': typeid == item.typeid}" v-for="item in typeList"
+                   v-on:click="getInfoList(item.typeid)">{{item.text}}</a>
+                <div class="zs_sea">
+                    <input class="zs_h2_inp" type="text" name="search" placeholder="搜索" v-model="keyword" v-on:keyup.enter="search">
+                    <a href="javascript:;" v-on:click="search"></a>
+                </div>
+                <p class="zs_sea_jg" v-if="searchWord">搜索“<span class="jg_t">{{searchWord}}</span>”找到<span class="jg_s">{{total}}</span>个结果</p>
+            </div>
+            <div class="al1-con">
+                <ul class="show al1-dhm">
+                    <li v-for="item in list">
+                        <a href="javascript:;" title="" target="_blank">
+                            <div class="zs_ul2_div">
+                                <img class="zs_ul2_img1" v-bind:src="item.imgurl" alt="" title="" />
+                                <div class="zs_ul2_er">
+                                    <img class="zs_ul2_img2" v-bind:src="getOrcode(item)" alt="" />
+                                </div>
+                                <div class="zs_ul2_x">
+                                    <span></span>
+                                    <label v-on:click="openUrl(item)">点击进入</label>
+                                </div>
+                            </div>
+                            <h2>{{item.title}}</h2>
+                            <span class="zs_ul2_s1">
+                                <i>{{formatCount(item.seecount)}}</i>
+                                <label v-on:click="onPrize(item)" style="cursor:pointer;">{{formatCount(item.prizecount)}}</label>
+                            </span>
+                            <img class="zs_ul2_s2" src="images/module-qj/qjhz_13.png" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="zs_jia" v-if="list.length < total" v-on:click="getMore">查看更多</div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $(".al2-box").hover(function () {
+                $(this).find(".al2-con .nr:eq(0)").animate({ "top": "0" });
+            }, function () {
+                $(this).find(".al2-con .nr:eq(0)").animate({ "top": "447px" });
+            });
+            $('.al1-con').on('mouseenter', '.al1-dhm .zs_ul2_div', function () {
+                $(this).find(".zs_ul2_x").show();
+            });
+            $('.al1-con').on('mouseleave', '.al1-dhm .zs_ul2_div', function () {
+                $(this).find(".zs_ul2_x").hide();
+            });
+
+            $('.al1-con').on('mouseenter', '.zs_ul2_s2', function () {
+                $(this).parents("li").find(".zs_ul2_er").show();
+                $(this).parents("li").find(".zs_ul2_s1,.zs_ul2_x").hide();
+            });
+            $('.al1-con').on('mouseleave', '.zs_ul2_s2', function () {
+                $(this).parents("li").find(".zs_ul2_er,.zs_ul2_x").hide();
+                $(this).parents("li").find(".zs_ul2_s1").show();
+            });
+            $(".zs_h2_inp").focus(function () {
+                $(".zs_sea").css({ "border-color": "#2fd0b5" })
+            });
+            $(".zs_h2_inp").blur(function () {
+                $(".zs_sea").css({ "border-color": "#ddd" })
+            });
+
+            $(".pro-dz-banner").addClass('in')
+            $(".con1").addClass('in')
+            var c1 = $(".con1").offset().top - 500;
+            $(window).scroll(function (event) {
+                var t = $(document).scrollTop();
+                if (t >= c1) {
+                    $(".con1").addClass('in')
+                }
+            });
+        });
+
+        (function () {
+            //注册插件
+            Vue.use(VueLoading)
+            var typeList = @Html.Raw(JsonConvert.SerializeObject(ViewBag.TypeList))
+                typeList = typeList || []
+            var initData = @Html.Raw(JsonConvert.SerializeObject(ViewBag.CaseList))
+                initData = initData || {}
+
+            new Vue({
+                el: ".wrap",
+                data: {
+                    typeList: typeList,
+                    list: initData.list || [],
+                    prizeIds: [],
+                    page: 1,
+                    pageSize: 12,
+                    total: initData.count || 0,
+                    typeid: typeList[0] ? typeList[0].typeid : 0,
+                    keyword: "",
+                    searchWord: ""
+                },
+                methods: {
+                    formatDate: function (str) {
+                        if (str) {
+                            return dateFormat(new Date(str), "yyyy-mm-dd")
+                        }
+                        return ""
+                    },
+                    getOrcode: function (item) {
+                        if (item.link) {
+                            return "/api/web/qrcode?data=" + encodeURIComponent(item.link)
+                        }
+                        return ""
+                    },
+                    formatCount: function (count) {
+                        if (count < 10000) {
+                            return count
+                        }
+                        return (count / 10000).toFixed(1) + "万"
+                    },
+                    getInfoList: function (typeid) {
+                        if (this.typeid == typeid) {
+                            return;
+                        }
+                        this.page = 1
+                        this.list = []
+                        this.count = 0
+                        this.typeid = typeid
+                        if (!this.keyword) {
+                            this.searchWord = ""
+                        }
+                        this.getList()
+                    },
+                    getMore: function () {
+                        if (this.list.length < this.total) {
+                            this.page++;
+                            var self = this
+                            this.getList()
+                        }
+                    },
+                    search: function () {
+                        this.searchWord = ""
+                        this.list = []
+                        this.total = 0
+                        this.getList()
+                    },
+                    getList: function () {
+                        var self = this
+                        var loading = null;
+                        $.ajax({
+                            url: "/api/web/cases/" + this.page + "/" + this.pageSize,
+                            method: "GET",
+                            dataType: "json",
+                            data: {
+                                typeid: self.typeid,
+                                title: self.keyword
+                            },
+                            beforeSend: function (jqXHR, settings) {
+                                loading = self.$loading.show();
+                            },
+                            success: function (res) {
+                                if (res.code == 200) {
+                                    self.list.push(...res.data.list)
+                                    self.total = res.data.count
+                                    if (self.keyword) {
+                                        self.searchWord = self.keyword
+                                    }
+                                } else {
+                                    alert(res.msg)
+                                }
+                            },
+                            complete: function (jqXHR, textStatus) {
+                                loading.hide();
+                            }
+                        })
+                    },
+                    onPrize: function (item) {
+                        var self = this
+                        if (this.prizeIds.indexOf(item.id) > -1) {
+                            return
+                        }
+                        $.ajax({
+                            url: "/api/web/case/" + item.id + "/setprizecount",
+                            method: "POST",
+                            dataType: "json",
+                            data: {},
+                            success: function (res) {
+                                if (res.code == 200) {
+                                    item.prizecount++;
+                                    self.prizeIds.push(item.id)
+                                }
+                            }
+                        })
+                    },
+                    openUrl: function (item) {
+                        if (item.link) {
+                            $.ajax({
+                                url: "/api/web/case/" + item.id + "/setseecount",
+                                method: "POST",
+                                dataType: "json",
+                                data: {},
+                                success: function (res) {
+                                    if (res.code == 200) {
+                                        item.seecount++;
+                                    }
+                                }
+                            })
+                        }
+                        window.open(item.link)
+                    }
+                }
+            });
+        })();
+    </script>
+}

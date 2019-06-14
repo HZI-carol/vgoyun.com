@@ -1,0 +1,195 @@
+﻿@{
+    ViewBag.Title = "维构全景 | 资讯";
+    ViewBag.ActiveMenu = "Information";
+}
+@using Newtonsoft.Json
+
+@section head {
+    <link rel="stylesheet" type="text/css" href="/css/module-qj.css">
+    <link rel="stylesheet" type="text/css" href="/css/news.css">
+    <link rel="stylesheet" type="text/css" href="/css/banner/swiper-3.4.2.min.css" />
+    <script src="/js/banner/swiper-3.4.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/vue.min.js"></script>
+    <link href="/js/vue-loading-overlay/vue-loading.min.css" rel="stylesheet" />
+    <script src="/js/vue-loading-overlay/vue-loading.min.js"></script>
+    <script src="/js/dateformat.js"></script>
+}
+
+<!--轮播-->
+<div class="module-banner">
+    <div class="swiper-container" id="swiper1">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="/images/banner/banner004.png">
+            </div>
+            <div class="swiper-slide">
+                <img src="/images/news/news-banner1.jpg">
+            </div>
+            <div class="swiper-slide">
+                <img src="/images/news/news-banner2.jpg">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!--VR全景营销-->
+<div class="news-module">
+    <div class="wrap">
+        <div class="title">
+            <h1>VR全景营销</h1>
+        </div>
+        <div class="news-con" style="padding-bottom:30px;" v-cloak>
+            <div class="news-lis">
+                <a href="javascript:;" v-bind:class="{'on': typeid == item.typeid}" v-for="item in typeList"
+                   v-on:click="getInfoList(item.typeid)">{{item.text}}</a>
+            </div>
+            <div class="con">
+                <div class="con-l">
+                    <div class="news-box-wrap show">
+                        <div class="news-box" v-for="item in list">
+                            <div class="box-img">
+                                <a v-bind:href="/information/ + item.id">
+                                    <img v-bind:src="item.imgurl">
+                                </a>
+                            </div>
+                            <div class="box-con">
+                                <a v-bind:href="/information/ + item.id">
+                                    <h2>{{item.title}}</h2>
+                                    <p>{{item.samllcontents.substring(0, 60) + ".... "}}<em>更多详情>></em></p>
+                                    <div class="con-details">
+                                        <span><i class="time"></i>{{formatDate(item.created)}}</span>
+                                        <span><i class="wb"></i>浏览次数：{{formatCount(item.seecount)}}</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--右边-->
+                <div class="con-r">
+                    <div class="con-r-tit">
+                        <p><i></i>热点阅读</p>
+                        <a href="#" class="more hot"></a>
+                    </div>
+                    <div class="con-r-con">
+                        <div class="con-r-box" v-for="item in hotList">
+                            <a v-bind:href="/information/ + item.id" class="con-r-con-img">
+                                <img v-bind:src="item.imgurl" />
+                            </a>
+                            <a v-bind:href="/information/ + item.id" class="con-r-con-tit">
+                                {{item.title}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="zs_jia" v-if="list.length < total" v-on:click="getMore">查看更多</div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+
+        var mySwiper = new Swiper('#swiper1', {
+            direction: 'horizontal',
+            loop: true,
+            pagination: '#swiper1 .swiper-pagination',
+            autoplay: 5000,
+            paginationClickable: true,
+        })
+
+        $(".news-con .news-lis a").hover(function () {
+            var i = $(".news-con .news-lis a").index(this);
+            $(this).addClass('on').siblings().removeClass('on');
+            $(".con .news-box-wrap").eq(i).show().siblings().hide();
+        });
+
+        (function () {
+            var typeList = @Html.Raw(JsonConvert.SerializeObject(ViewBag.TypeList))
+                typeList = typeList || []
+            var initData = @Html.Raw(JsonConvert.SerializeObject(ViewBag.InformationList))
+                initData = initData || {}
+            var hotList = @Html.Raw(JsonConvert.SerializeObject(ViewBag.HotList))
+                hotList = hotList || []
+
+            //注册插件
+            Vue.use(VueLoading)
+            new Vue({
+                el: ".wrap",
+                data: {
+                    typeList: typeList,
+                    list: initData.list || [],
+                    hotList: hotList,
+                    page: 1,
+                    pageSize: 10,
+                    total: initData.count || 0,
+                    typeid: typeList[0] ? typeList[0].typeid : 0,
+                },
+                methods: {
+                    formatDate: function (str) {
+                        if (str) {
+                            return dateFormat(new Date(str), "yyyy-mm-dd")
+                        }
+                        return ""
+                    },
+                    formatCount: function (count) {
+                        if (count < 10000) {
+                            return count
+                        }
+                        return (count / 10000).toFixed(1) + "万"
+                    },
+                    getInfoList: function (typeid) {
+                        if (this.typeid == typeid) {
+                            return;
+                        }
+                        this.page = 1
+                        this.list = []
+                        this.count = 0
+                        this.typeid = typeid
+                        this.getList(this.typeid, -1)
+                    },
+                    getMore: function () {
+                        if (this.list.length < this.total) {
+                            this.page++;
+                            var self = this
+                            this.getList(this.typeid, -1)
+                        }
+                    },
+                    getList: function (typeid, ishot) {
+                        var self = this
+                        var loading = null;
+                        $.ajax({
+                            url: "/api/web/articles/" + this.page + "/" + this.pageSize,
+                            method: "GET",
+                            dataType: "json",
+                            data: {
+                                typeid: typeid,
+                                ishot: ishot
+                            },
+                            beforeSend: function (jqXHR, settings) {
+                                loading = self.$loading.show();
+                            },
+                            success: function (res) {
+                                if (res.code == 200) {
+                                    if (ishot > 0) {
+                                        self.hotList = res.data.list
+                                    } else {
+                                        self.list.push(...res.data.list)
+                                        self.total = res.data.count
+                                    }
+                                } else {
+                                    alert(res.msg)
+                                }
+                            },
+                            complete: function (jqXHR, textStatus) {
+                                loading.hide();
+                            }
+                        })
+                    }
+                }
+            });
+        })();
+    </script>
+}
+

@@ -1,0 +1,34 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Request["title"]</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        iframe {
+            position: absolute;
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    @{
+        string id = Request["id"];
+        if (string.IsNullOrEmpty(id))
+        {
+            id = Request.RequestContext.RouteData.Values["id"] + "";
+        }
+    }
+    <iframe id="view" src="@("https://beyond.3dnest.cn/play/?m=" + id)"></iframe>
+</body>
+</html>

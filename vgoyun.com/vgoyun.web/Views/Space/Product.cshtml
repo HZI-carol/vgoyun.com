@@ -1,0 +1,116 @@
+﻿@using vgoyun.idal.models
+@{
+    ViewBag.Title = "维构全景-全景源码_720全景_vr全景加盟平台";
+    ViewBag.ActiveMenu = "Product";
+    ViewBag.SpaceLayout = true;
+}
+
+@*头部样式与脚本*@
+@section head {
+    <link rel="stylesheet" type="text/css" href="/css/banner/swiper-3.4.2.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/animate.min.css" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1178410_rk490ye4d8n.css">
+    <link rel="stylesheet" type="text/css" href="/css/3d/index.css" />
+    <script src="/js/banner/swiper-3.4.2.min.js" type="text/javascript"></script>
+    <script src="/js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+}
+
+<div class="banner">
+    <img src="/images/3d/3Dbanner1.jpg" alt="">
+    <div class="banner-about">
+        <h2>空间感</h2>
+        <p>让全景漫游步步为 "营"</p>
+        <p>维构3D实景一站式解决方案</p>
+    </div>
+</div>
+
+<!-- 三维视觉扫描相机 -->
+<div class="module-con con1 camera">
+    <div class="wrap">
+        <div class="title">
+            <h3 class="wow  bounce  rubberBand delay-1s">三维视觉扫描相机</h3>
+            <p class="wow  shake  rubberBand ">深度视觉功能精密扫描</p>
+        </div>
+        <div class="module-camera-content">
+            <div class="wow  rotateIn  slow delay-1s"><img src="/images/3d/3d-pd1.png" alt=""></div>
+            <p class="wow slideInUp">IOS应用控制操作，自动采集空间三维数据和色彩数据</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- 3D实景 沉浸式空间漫游 -->
+<div class="module-con con2 live-action">
+    <div class="container">
+        <div class="title  wow  bounce  rubberBand delay-1s"><h3>3D实景 沉浸式空间漫游</h3></div>
+        <div class="module-action-content">
+            <div class="title2">
+                <h4 class="wow slideInUp">还原真实场景</h4>
+                <p class="wow  slideInUp">机器三维视觉快速完成三维结构重建，图像拼接，纹理匹配，自动生成3D实景</p>
+            </div>
+            <div class="pc">
+                <img class="wow zoomIn delay-1s" src="/images/3d/3d-pd2.png" alt="">
+                <p class="wow  slideInUp">线上展示多终端适配，可自由行走，帮助企业最高效实现场景3D化</p>
+            </div>
+            <div class="space-information">
+                <h4 class="wow  slideInUp">充分展示空间信息</h4>
+                <ul class="wow  zoomInLeft slow">
+                    <li><i class="iconfont icon-hangzou"></i><span>自由选择行走路径</span></li>
+                    <li><i class="iconfont icon-celiang"></i><span>空间内尺寸测量功能</span></li>
+                    <li><i class="iconfont icon-xinxi"></i><span>自定义嵌入展示信息</span></li>
+                    <li><i class="iconfont icon-vr"></i><span>VR沉浸式空间漫游</span></li>
+                    <li><i class="iconfont icon-vr1"></i><span>空间实景导航</span></li>
+                    <li><i class="iconfont icon-redian"></i><span>热点自由嵌入</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 3D 用户编辑后台 -->
+<div class="module-con con3 user-editor">
+    <div class="wrap">
+        <div class="title">
+            <h3 class="wow  bounce  rubberBand delay-1s">用户编辑后台</h3>
+            <p class="wow  shake  rubberBand ">随时随地编辑更改作品内容信息</p>
+        </div>
+        <div class="user-editor-content">
+            <img class="wow  slideInLeft   slow " src="/images/3d/3d-pd3.png" alt="">
+            <p class="wow  slideInRight   slow">
+                图文、链接、商品、3D环物、音乐热点自由嵌入，LOGO、地址、电话、地图定位、Loading页面、作者信息、模型信息自由编辑、测量、指南针，
+                VR等功能自由控制开启或关闭、多视角导览式观看，支持上传第三方全景照片，展示户外风景
+            </p>
+        </div>
+    </div>
+</div>
+
+@*底部脚本*@
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                speed: 1000,
+                loop: true,
+                autoplay: 10000,
+                preventLinksPropagation: false,
+                autoplayDisableOnInteraction: false,
+                paginationClickable: true,
+            })
+        })
+
+        //wow插件 页面滚动触发animated.css动画
+        if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
+            new WOW().init();
+        }
+
+        var wow = new WOW({
+            boxClass: 'wow',
+            animateClass: 'animated',
+            offset: 100,
+            mobile: true,
+            live: true
+        });
+        wow.init();
+    </script>
+}

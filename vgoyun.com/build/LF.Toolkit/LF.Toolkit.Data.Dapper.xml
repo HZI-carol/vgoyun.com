@@ -1,0 +1,426 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LF.Toolkit.Data.Dapper</name>
+    </assembly>
+    <members>
+        <member name="T:LF.Toolkit.Data.Dapper.PagedList`1">
+            <summary>
+            简单分页列表类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:LF.Toolkit.Data.Dapper.PagedList`1.RowSet">
+            <summary>
+            获取或设置分页列表集合
+            </summary>
+        </member>
+        <member name="P:LF.Toolkit.Data.Dapper.PagedList`1.Count">
+            <summary>
+            获取或设置分页总条数
+            </summary>
+        </member>
+        <member name="T:LF.Toolkit.Data.Dapper.SortInfo">
+            <summary>
+            排序信息类
+            </summary>
+        </member>
+        <member name="P:LF.Toolkit.Data.Dapper.SortInfo.Column">
+            <summary>
+            获取或设置排序字段名
+            </summary>
+        </member>
+        <member name="P:LF.Toolkit.Data.Dapper.SortInfo.Ascending">
+            <summary>
+            获取或设置是否升序
+            </summary>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SortInfo.#ctor(System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="column"></param>
+            <param name="ascending"></param>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SortInfo.ToString">
+            <summary>
+            返回SQL ORDER BY 语句
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SortInfo.Parse(System.String)">
+            <summary>
+            将指定排序规则语句转换为排序对象
+            </summary>
+            <param name="orderBy">格式为：field_(DESC/ASC)</param>
+            <returns>若转换失败则返回NULL</returns>
+        </member>
+        <member name="T:LF.Toolkit.Data.Dapper.AliasColumn">
+            <summary>
+            带有别名的字段信息
+            </summary>
+        </member>
+        <member name="P:LF.Toolkit.Data.Dapper.AliasColumn.Column">
+            <summary>
+            获取或设置排序字段
+            </summary>
+        </member>
+        <member name="P:LF.Toolkit.Data.Dapper.AliasColumn.Alias">
+            <summary>
+            获取或设置字段别名
+            </summary>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.AliasColumn.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="column"></param>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.AliasColumn.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="column"></param>
+            <param name="alias"></param>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.AliasColumn.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LF.Toolkit.Data.Dapper.SqlClauses">
+            <summary>
+            SQL查询条件集
+            </summary>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlClauses.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="prefix">查询条件前缀</param>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlClauses.Create(System.String)">
+            <summary>
+            生成一个新的查询条件实例
+            </summary>
+            <param name="prefix">查询条件前缀</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlClauses.AddClause(System.String,System.String,System.Boolean)">
+            <summary>
+            添加查询条件
+            </summary>
+            <param name="condition">查询条件主体</param>
+            <param name="sqlOp">运算符 AND、OR</param>
+            <param name="useCondition">是否使用查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlClauses.AndCaluse(System.String,System.Boolean)">
+            <summary>
+            以AND方式添加查询条件
+            </summary>
+            <param name="condition"></param>
+            <param name="useCondition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlClauses.OrCaluse(System.String,System.Boolean)">
+            <summary>
+            以OR方式添加查询条件
+            </summary>
+            <param name="condition"></param>
+            <param name="useCondition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlClauses.ToSql">
+            <summary>
+            生成查询条件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LF.Toolkit.Data.Dapper.SqlStorageBase">
+            <summary>
+            表示Sql存储异步查询部分
+            </summary>
+            <summary>
+            表示Sql数据库存储基类
+            </summary>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.BeginTransactionAsync``1(System.Func{System.Data.IDbTransaction,System.Threading.Tasks.Task{``0}},System.Data.IsolationLevel)">
+            <summary>
+            开启一个事务并返回事务执行结果，执行完毕后会自动释放连接
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="func">查询委托</param>
+            <param name="li"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.ConnectAsync``1(System.Func{System.Data.IDbConnection,System.Threading.Tasks.Task{``0}})">
+            <summary>
+            连接数据库并返回数据库查询结果，执行完毕后会自动释放连接 【异步方式】
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="func">查询委托</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.ConnectAsync``1(System.Func{System.Data.IDbConnection,System.Threading.Tasks.Task{``0}},System.Data.IDbTransaction)">
+            <summary>
+            连接数据库并返回数据库查询结果，执行完毕后会自动释放连接 【异步方式】
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="func">查询委托</param>
+            <param name="transaction">查询事务，若事务不为空则使用事务中的数据库连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.QueryFirstOrDefaultAsync``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            【异步】查询第一行数据
+            【注意：事务查询需要在执行完毕后手动释放】 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.QuerySingleOrDefaultAsync``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            【异步】查询第一行数据，若多于一行则抛出异常
+            【注意：事务查询需要在执行完毕后手动释放】  
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.QueryAsync``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            【异步】指定类型结果集查询
+            【注意：事务查询需要在执行完毕后手动释放】 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.ExecuteAsync(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            【异步】执行SQL查询并返回影响的行数
+            【注意：事务查询需要在执行完毕后手动释放】
+            </summary>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.ExecuteScalarAsync``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            【异步】执行SQL查询并返回第一行第一列
+            【注意：事务查询需要在执行完毕后手动释放】
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.GetPagedListAsync``1(System.String,System.Object,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            【异步】通用查询分页列表
+            【注意：SQL查询语句顺序为:列表查询、总条数查询】
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LF.Toolkit.Data.Dapper.SqlStorageBase.ConnectionStringSettings">
+            <summary>
+            获取数据库连接字符串设置
+            </summary>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.#ctor(System.String)">
+            <summary>
+            Sql存储基类构造器
+            </summary>
+            <param name="connectionKey"></param>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.InitializeDbProvider">
+            <summary>
+            初始化数据库连接配置
+            </summary>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.CreateConnection">
+            <summary>
+            创建一个数据库连接实例
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.OpenConnection">
+            <summary>
+            获取并打开一个数据库连接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            开始单机数据库事务
+            </summary>
+            <param name="il"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.BeginTransaction``1(System.Func{System.Data.IDbTransaction,``0},System.Data.IsolationLevel)">
+            <summary>
+            开启一个事务并返回事务执行结果，执行完毕后会自动释放连接
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="func">查询委托</param>
+            <param name="li"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.Connect``1(System.Func{System.Data.IDbConnection,``0})">
+            <summary>
+            连接数据库并返回数据库查询结果，查询完毕后会自动释放连接
+            </summary>
+            <typeparam name="T">查询委托</typeparam>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.Connect``1(System.Func{System.Data.IDbConnection,``0},System.Data.IDbTransaction)">
+            <summary>
+            连接数据库并返回数据库查询结果，查询完毕后会自动释放连接
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="func">查询委托</param>
+            <param name="transaction">查询事务，若事务不为空则使用事务中的数据库连接</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.GetSortInfo(System.String,LF.Toolkit.Data.Dapper.SortInfo,System.Collections.Generic.IEnumerable{LF.Toolkit.Data.Dapper.AliasColumn})">
+            <summary>
+            解析并生成排序语句
+            若解析失败则返回默认排序信息
+            </summary>
+            <param name="orderBy">>格式为：field_(DESC/ASC)</param>
+            <param name="defaultSort"></param>
+            <param name="includeSortableColumns">允许排序的字段信息集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.ToLikeParam(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            转换为dapper支持的like参数
+            </summary>
+            <param name="value"></param>
+            <param name="leftWrapper">是否包含左边%</param>
+            <param name="rightWrapper">是否包含右边%</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.ParseSqlDateTime(System.String)">
+            <summary>
+            转换日期字符串为Sql时间
+            若日期转换失败、日期小于1753-01-01或大于9999-12-31，则返回Sql最小时间1753-01-01
+            </summary>
+            <param name="timeStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.TryParseQueryDate(System.String,System.String,System.Boolean)">
+            <summary>
+            解析日期查询字符串，若成功则返回格式为yyyy-MM-dd的日期字符串
+            </summary>
+            <param name="dateStr"></param>
+            <param name="defaultDateStr">解析失败的默认字符串</param>
+            <param name="nextDay">是否在解析成功的日期上往后推一天</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.QueryFirstOrDefault``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Data.CommandType},System.Nullable{System.Int32})">
+            <summary>
+            查询第一行数据
+            【注意：事务查询需要在执行完毕后手动释放】 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="commandType"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.QuerySingleOrDefault``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Data.CommandType},System.Nullable{System.Int32})">
+            <summary>
+            查询第一行数据，若多于一行则抛出异常
+            【注意：事务查询需要在执行完毕后手动释放】 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="commandType"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.Query``1(System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            指定类型结果集查询
+            【注意：事务查询需要在执行完毕后手动释放】 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.Execute(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            执行SQL查询并返回影响的行数
+            【注意：事务查询需要在执行完毕后手动释放】
+            </summary>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.ExecuteScalar``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            执行SQL查询并返回第一行第一列
+            【注意：事务查询需要在执行完毕后手动释放】
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Data.Dapper.SqlStorageBase.GetPagedList``1(System.String,System.Object,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            通用查询分页列表
+            【注意：SQL查询语句顺序为:列表查询、总条数查询】
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="commandText"></param>
+            <param name="param"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

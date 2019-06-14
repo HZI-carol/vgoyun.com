@@ -1,0 +1,195 @@
+﻿<!--底部-->
+<div class="footer">
+    <div class="footer-wrap">
+        <div class="footer-t">
+            <div class="footer-t-r">
+                <div class="footer-company">
+                    <div class='footer-t-i footer-ico1'>
+                        <i class="iconfont icon-gongsi-copy "></i>
+                    </div>
+                    <h4>维构科技（福建）有限公司</h4>
+                </div>
+                <div class="footer-company">
+                    <div class='footer-t-i footer-ico2'>
+                        <i class="iconfont icon-dizhi footer-ico2"></i>
+                    </div>
+                    <h4>福建省福州市海峡创意产业园园6栋3层</h4>
+                </div>
+                <div class="footer-company">
+                    <div class='footer-t-i footer-ico3'>
+                        <i class="iconfont icon-QQxian footer-ico3"></i>
+                    </div>
+                    <h4>1107362563</h4>
+                </div>
+                <div class="footer-company">
+                    <div class='footer-t-i footer-ico4'>
+                        <i class="iconfont icon-dianhua footer-ico4"></i>
+                    </div>
+                    <h4>400-0058-720</h4>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="footer-b">
+            <div class="footer-logo">
+                <img src="/images/footer-logo.png">
+            </div>
+            <div class="service">
+                <div class="title">
+                    <h5>产品介绍</h5>
+                    <i></i>
+                </div>
+                <div class="service-lis">
+                    <div class="service-lis-l">
+                        <a href="javascript:;">VR全景互动漫游系统</a>
+                        <a href="javascript:;">VR全景系统SDK服务</a>
+                        <a href="javascript:;">VR视频互动漫游系统</a>
+                        <a href="javascript:;">360全景服务</a>
+                    </div>
+                </div>
+                <b></b>
+            </div>
+            <div class="service">
+                <div class="title">
+                    <h5>解决方案</h5>
+                    <i></i>
+                </div>
+                <div class="service-lis">
+                    <div class="service-lis-l">
+                        <a href="javascript:;">VR全景营销</a>
+                        <a href="javascript:;">VR全景广告联盟</a>
+                        <a href="javascript:;">全景智慧城市</a>
+                        <a href="/3d">3D趣空间</a>
+                    </div>
+                </div>
+                <b></b>
+            </div>
+            <div class="service">
+                <div class="title">
+                    <h5>关于维构</h5>
+                    <i></i>
+                </div>
+                <div class="service-lis">
+                    <div class="service-lis-l">
+                        <a href="javascript:;">关于我们</a>
+                        <a href="javascript:;">全景合作</a>
+                        <a href="javascript:;">体验中心</a>
+                    </div>
+                </div>
+                <b></b>
+            </div>
+            <div class="ewm ewm1">
+                <img src="/images/ewm.jpg">
+                <span>微信公众号</span>
+            </div>
+            <div class="ewm ewm2">
+                <img src="/images/ewm2.png">
+                <span>全景展示</span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <span>Copyright © 2013 - @DateTime.Now.Year 维构科技（福建）有限公司 All Rights Reserved. 闽ICP备12008337号-10  （ 投资有风险，选择需谨慎 ）</span>
+    </div>
+</div>
+
+
+<!--回到首页-->
+<div class="float-sidebar">
+    <ul>
+        <li class="go-top">
+            <a href="javascript:goTop();" title="回到顶部">
+                <i></i>
+            </a>
+        </li>
+        <li class="tel">
+            <a href="javascript:;" title="电话">
+                <i></i>
+                <p>电话</p>
+                <span class="telephone">400-0058-720</span>
+            </a>
+        </li>
+        <li class="qq">
+            <a href="http://wpa.qq.com/msgrd?v=3&uin=1107362563&site=qq&menu=yes" target="_blank" title="QQ">
+                <i></i>
+                <p>QQ</p>
+                <span class="telephone">1107362563</span>
+            </a>
+        </li>
+        <li class="wx">
+            <a href="javascript:;" title="微信">
+                <i></i>
+                <p>微信</p>
+                <span class="ewm"><img src="/images/ewm.jpg"></span>
+            </a>
+        </li>
+        <li class="fk">
+            <a href="javascript:;" title="反馈">
+                <i></i>
+                <p>反馈</p>
+                <div class="spit">
+                    <textarea class="t-content" placeholder="输入吐槽内容"></textarea>
+                    <div class="spit-bnt">
+                        <span class="bnt-t">吐槽</span>
+                        <span class="bnt_on">不吐槽了</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+@{
+    bool showCustomerService = true;
+#if DEBUG
+showCustomerService = false;
+#endif
+}
+
+@if (showCustomerService)
+{
+    <script type="text/javascript">
+        (function () {
+            var _53code = document.createElement("script");
+            _53code.src = "https://tb.53kf.com/code/code/10196728/1";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(_53code, s);
+        })();
+    </script>
+}
+
+<script type="text/javascript">
+    $(function () {
+        $(".spit-bnt .bnt-t").on("click", function () {
+            var self = this
+            var loading = $(this).data("loading");
+            if (loading) return;
+            var content = $(".t-content").val()
+            if (!content) {
+                return
+            }
+            $.ajax({
+                url: "/api/web/comments",
+                method: "POST",
+                dataType: "json",
+                data: {
+                    contents: content
+                },
+                beforeSend: function (jqXHR, settings) {
+                    $(self).data("loading", "1");
+                },
+                success: function (res) {
+                    if (res.code == 200) {
+                        $(".spit").removeClass('on')
+                        $(".spit textarea").val("")
+                    } else {
+                        alert(res.msg)
+                    }
+                },
+                complete: function (jqXHR, textStatus) {
+                    $(self).removeData("loading");
+                }
+            })
+        })
+    })
+</script>

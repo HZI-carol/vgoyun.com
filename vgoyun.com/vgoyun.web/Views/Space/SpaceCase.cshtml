@@ -1,0 +1,98 @@
+﻿@using vgoyun.idal.models
+@using Newtonsoft.Json
+@{
+    ViewBag.Title = "维构全景-全景源码_720全景_vr全景加盟平台";
+    ViewBag.ActiveMenu = "SpaceCase";
+    ViewBag.SpaceLayout = true;
+    var domain = "http://www.3dnest.cn/";
+    var list = new List<dynamic>();
+    list.Add(new { id = "zq_pcylgc_13", title = "音乐谷仓", thumb_url = "images/case_20180611_yygc.jpg" });
+    list.Add(new { id = "zq_jsblhjh_9", title = "将帅碑林", thumb_url = "images/case_20180611_jsbl.jpg" });
+    list.Add(new { id = "zq_gthyjz_25", title = "古田会议旧址", thumb_url = "images/case_20180421_gthyjz.jpg" });
+    list.Add(new { id = "zq_pctkzc_33", title = "天空之城", thumb_url = "images/case_20180421_tkzc.jpg" });
+    list.Add(new { id = "zq_bqxn_8", title = "北汽新能源", thumb_url = "images/case_20180106_bqxny.jpg" });
+    list.Add(new { id = "zq_mqbd_50", title = "明清宝典", thumb_url = "images/case_20180106_mqbd.jpg" });
+    list.Add(new { id = "zhq_szxsg", title = "三中校史馆", thumb_url = "images/case_20180106_szxsg.jpg" });
+    list.Add(new { id = "zhq_blyf_32", title = "百年洋房里的怀旧客厅", thumb_url = "images/case_1101_bnyf.jpg" });
+    list.Add(new { id = "zq_gzys_1", title = "观照艺术空间", thumb_url = "images/case_1101_gzys.jpg" });
+    list.Add(new { id = "ltbwg2", title = "兰亭博物馆", thumb_url = "images/case_06_ltbwg.jpg" });
+    list.Add(new { id = "Starbucks", title = "星巴克", thumb_url = "images/case0_11.jpg" });
+    list.Add(new { id = "wdrh_wttf", title = "行政外滩套房", thumb_url = "images/case2_1.png" });
+}
+
+@*头部样式与脚本*@
+@section head {
+    <link rel="stylesheet" type="text/css" href="/css/banner/swiper-3.4.2.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/animate.min.css" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1178410_rk490ye4d8n.css">
+    <link rel="stylesheet" type="text/css" href="/css/3d/index.css" />
+    <script src="/js/banner/swiper-3.4.2.min.js" type="text/javascript"></script>
+    <script src="/js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+}
+
+<div class="banner">
+    <img src="/images/3d/3Dbanner1.jpg" alt="">
+    <div class="banner-about">
+        <h2>空间感</h2>
+        <p>让全景漫游步步为 "营"</p>
+        <p>维构3D实景一站式解决方案</p>
+    </div>
+</div>
+
+<!-- 三维视觉扫描相机 -->
+<div class="module-con con1 space">
+    <div class="wrap">
+        <div class="title">
+            <h3 class="wow  bounce  rubberBand delay-1s">3D空间</h3>
+            <p class="wow slideInUp">行走于世界 游览于指尖</p>
+        </div>
+        <div class="module-space-content">
+            <ul>
+                @foreach (var item in list)
+                {
+                    <li class="wow fadeInUp">
+                        <a href="@("/3d/spaces/" + item.id + "?title=" + item.title)" target="_blank">
+                            <img src="@(domain + item.thumb_url)" />
+                            <div class="zs_ul2_x">
+                                <span></span>
+                                <label for="">点击进入</label>
+                            </div>
+                        </a>
+                        <p>@item.title</p>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+@*底部脚本*@
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                speed: 1000,
+                loop: true,
+                autoplay: 10000,
+                preventLinksPropagation: false,
+                autoplayDisableOnInteraction: false,
+                paginationClickable: true,
+            })
+        })
+
+        //wow插件 页面滚动触发animated.css动画
+        if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
+            new WOW().init();
+        }
+
+        var wow = new WOW({
+            boxClass: 'wow',
+            animateClass: 'animated',
+            offset: 100,
+            mobile: true,
+            live: true
+        });
+        wow.init();
+    </script>
+}

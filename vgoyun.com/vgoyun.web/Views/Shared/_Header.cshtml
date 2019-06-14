@@ -1,0 +1,50 @@
+﻿<!--头部logo和导航-->
+<div class="header-top">
+    <div class="gx-no">
+        <div class="number">国家高新技术企业编号 ：GR201835000618</div>
+        <div class="hotline">系统购买热线：400-0058-720</div>
+    </div>
+    <div class="header-wrap" id="header-wrap">
+        <div class="head-module">
+            <div class="head-logo">
+                <a href="/">
+                    <img src="/images/header-logo.png" alt="">
+                </a>
+                <span></span>
+            </div>
+            <div class="head-nav">
+                <ul>
+                    <li style="padding: 0" class="@(ViewBag.ActiveMenu == "Index" ? "active" : "")">
+                        <a href="/" style="width:4em;">首页</a>
+                    </li>
+                    <li style="width: 10em; padding: 0" class="nestmenu @(ViewBag.ActiveMenu == "Project" ? "active" : "")">
+                        <a href="javascript:;">项目分析</a>
+                        <ul>
+                            <div class="triangle" style="margin-left: 55px;"></div>
+                            <li><a href="/product/sales">全景VR营销</a></li>
+                            <li><a href="/samples/solution/smartscity/smart-city.html" target="_blank">全景智慧城市</a></li>
+                            <li><a href="/product/adsense">全景广告联盟</a></li>
+                            <li><a href="http://vr.vgoyun.com/business" target="_blank">招商加盟</a></li>
+                        </ul>
+                    </li>
+                    <li class="@(ViewBag.ActiveMenu == "Product" ? "active" : "")">
+                        <a href="/product">产品介绍</a>
+                    </li>
+                    <li class="@(ViewBag.ActiveMenu == "Buy" ? "active" : "")">
+                        <a href="/buy">系统购买</a>
+                    </li>
+                    <li class="@(ViewBag.ActiveMenu == "Case" ? "active" : "")">
+                        <a href="/case">全景案例</a>
+                    </li>
+                    <li class="@(ViewBag.ActiveMenu == "Information" ? "active" : "")">
+                        <a href="/information">公司动态</a>
+                    </li>
+                    <li class="@(ViewBag.ActiveMenu == "About" ? "active" : "")">
+                        <a href="/about">关于我们</a>
+                    </li>
+                    <a href="http://vr.vgoyun.com" target="_blank" class="zc">注册试用</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+﻿@using vgoyun.web;
+@using System.Collections.Generic;
+@{
+    ViewBag.Title = "维构全景 | 资讯详情";
+    ViewBag.ActiveMenu = "Information";
+}
+
+@model vgoyun.idal.models.ArticleViewData
+@{ 
+    var current = Model.Current;
+}
+
+<link rel="stylesheet" type="text/css" href="/css/news.css">
+
+<div class="content">
+    <div class="wrap">
+        <!--面包屑导航-->
+        <div class="navbar">
+            <p>
+                <a href="/information">资讯列表</a><span>&gt;</span>
+                <a href="javascript:;">@current.title</a>
+            </p>
+        </div>
+        <div class="zx-con">
+            <div class="zx-con-l">
+                <div class="title">
+                    <h3 class="hid">@current.title</h3>
+                    <div class="title-b">
+                        <p>作者：<span>@current.author</span></p>
+                        <p>日期：<span>@current.created.ToString("yyyy-MM-dd")</span></p>
+                    </div>
+                </div>
+                <!--详情-->
+                <div class="int">
+                    <span>@current.samllcontents</span>
+                </div>
+                <!--正文 class="zx-body" -->
+                <div style="margin-top: 30px; overflow:hidden">
+                    @Html.Raw(current.contents)
+                </div>
+                <!--点赞-->
+                <div class="dz">
+                    <div class="bdsharebuttonbox">
+                        <a href="#" class="share1" data-cmd="sqq" title="分享到QQ好友"></a>
+                        <a href="#" class="share2" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="#" class="share3" data-cmd="tqq" title="分享到qq微博"></a>
+                        <a href="#" class="share4" data-cmd="tsina" title="分享到qq微博"></a>
+                        <a href="#" class="share5" data-cmd="sqq" title="分享到微信"></a>
+                        <a href="#" class="share6" data-cmd="qzone" title="分享到新朋友圈"></a>
+                        <a href="#" class="share7" data-cmd="tqq" title="分享到新浪微博"></a>
+                        <a href="#" class="share8" data-cmd="tsina" title="分享到人人"></a>
+                    </div>
+                </div>
+                <div class="share-ewm">
+                    <div class="title">想了解更多精彩请关注维构全景微信公众号</div>
+                    <div class="share-ewm-w">
+                        <div class="share-ewm-l">
+                            <img src="/images/news/erm.jpg">
+                            <p>关注维构全景</p>
+                        </div>
+                        <div class="share-ewm-r">
+                            <p>维构全景</p>
+                            <em>VR全景营销利器<br/>一次性买断 服务终生</em>
+                            <span>电话：400-0058-720</span>
+                            <span>企业QQ：1107362563</span>
+                        </div>
+                        <div class="t1"><strong>加入维构</strong>全景共赏美好未来</div>
+                    </div>
+                </div>
+                <div class="pre">
+                    <div href="javscript:;" class="hid" style="font-size:18px;">
+                        <strong>上一篇：</strong>
+                        @if (Model.Previous != null)
+                        {
+                            <a href="@("/information/" + Model.Previous.id)">@Model.Previous.title</a>
+                        }
+                        else
+                        {
+                            <span>暂无文章</span>
+                        }
+                    </div>
+                    <div href="javscript:;" class="hid" style="font-size:18px; margin-top:10px;">
+                        <strong>下一篇：</strong>
+                        @if (Model.Next != null)
+                        {
+                            <a href="@("/information/" + Model.Next.id)">@Model.Next.title</a>
+                        }
+                        else
+                        {
+                            <span>暂无文章</span>
+                        }
+                    </div>
+                </div>
+                <!--阅读延展-->
+                <div class="read">
+                    <i></i>
+                    <p>阅读延展</p>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <div class="read-img">
+                                    <img src="/images/news/news5.jpg" alt="" />
+                                </div>
+                            </a>
+                            <a href="#">
+                                <span>360全景照片拍摄的几个小技巧</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="read-img">
+                                    <img src="/images/news/news6.jpg" alt="" />
+                                </div>
+                            </a>
+                            <a href="#">
+                                <span>为什么现在的房地产行业都在使</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="read-img">
+                                    <img src="/images/news/news7.jpg" alt="" />
+                                </div>
+                            </a>
+                            <a href="#">
+                                <span>为什么现在的房地产行业都在使用360全景技术</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--右边-->
+            <div class="zx-con-r">
+                <!--广告-->
+                <div class="ad">
+                    <a href="#">
+                        <img src="@current.imgurl" />
+                    </a>
+                </div>
+                <!--热文榜单-->
+                <div class="hot">
+                    <div class="con-r-tit">
+                        <p><i></i>热点阅读</p>
+                        <a href="#" class="more hot"></a>
+                    </div>
+                    <div class="hot-r-con">
+                        @{
+                            int idx = 0;
+                        }
+                        @foreach (var item in Model.HotList)
+                        {
+                            <div class=" @idx == 0 ? 'con-r-box active': 'con-r-box'">
+                                <em class="c1">@(idx + 1)</em>
+                                <a href="@("/information/" + item.id)" class="con-r-con-img">
+                                    <img src="@item.imgurl">
+                                </a>
+                                <a href="@("/information/" + item.id)" class="con-r-con-tit">
+                                    @item.title
+                                </a>
+                            </div>
+                            idx++;
+                        }
+                    </div>
+                </div>
+                <!--最新快报-->
+                <div class="hot">
+                    <div class="con-r-tit">
+                        <p><i></i>最新快报</p>
+                        <a href="#" class="more new"></a>
+                    </div>
+                    <div class="hot-r-con">
+                        @{ idx = 0; }
+                        @foreach (var item in Model.NewList)
+                        {
+                            <div class=" @idx == 0 ? 'con-r-box active': 'con-r-box'">
+                                <em class="c1">@(idx + 1)</em>
+                                <a href="@("/information/" + item.id)" class="con-r-con-img">
+                                    <img src="@item.imgurl">
+                                </a>
+                                <a href="@("/information/" + item.id)" class="con-r-con-tit">
+                                    @item.title
+                                </a>
+                            </div>
+                            idx++;
+                        }
+                    </div>
+                </div>
+                <!--全景推荐-->
+                <div class="ad2">
+                    <div class="con-r-tit">
+                        <p><i></i>全景推荐</p>
+                        <a href="#" class="more">更多>></a>
+                    </div>
+                    @foreach (var item in Model.ShowList)
+                    {
+                        <div class="ad">
+                            <a href="@("/information/" + item.id)">
+                                <span>@item.title</span>
+                                <img src="@item.imgurl">
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

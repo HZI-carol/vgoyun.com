@@ -1,0 +1,368 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LF.Toolkit.Common</name>
+    </assembly>
+    <members>
+        <member name="T:LF.Toolkit.Common.HashAlgorithmProvider">
+            <summary>
+            表示哈希加密算法提供类
+            算法名称：MD5,SHA1,SHA256, SHA384,SHA512
+            </summary>
+        </member>
+        <member name="M:LF.Toolkit.Common.HashAlgorithmProvider.ComputeHash(System.String,System.String)">
+            <summary>
+            使用指定类型的Hash算法计算字符串（UTF-8字节编码）的Hash值
+            </summary>
+            <param name="alg">算法名称</param>
+            <param name="input">输入字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.HashAlgorithmProvider.ComputeHash(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            使用指定类型的Hash算法计算字符串（指定编码）的Hash值
+            </summary>
+            <param name="alg">算法名称</param>
+            <param name="input">输入字符串</param>
+            <param name="encoding">字符编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.HashAlgorithmProvider.ComputeHash(System.String,System.Byte[])">
+            <summary>
+            使用指定类型的Hash算法计算字节数组的Hash值
+            </summary>
+            <param name="alg">算法名称</param>
+            <param name="buffer">字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.HashAlgorithmProvider.ComputeHash(System.String,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            使用指定类型的Hash算法计算字节数组的Hash值
+            </summary>
+            <param name="alg">算法名称</param>
+            <param name="buffer">字节数组</param>
+            <param name="offset">开始位置</param>
+            <param name="count">长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.HashAlgorithmProvider.ComputeHash(System.String,System.IO.Stream)">
+            <summary>
+            使用指定类型的Hash算法计算字节流的Hash值
+            </summary>
+            <param name="alg">算法名称</param>
+            <param name="stream">字节流</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.HashAlgorithmProvider.ComputeHash(System.String,System.String,System.Boolean)">
+            <summary>
+            使用指定类型的Hash算法计算字符串（UTF-8字节编码）的Hash值
+            </summary>
+            <param name="alg">算法名称</param>
+            <param name="input">输入字符串</param>
+            <param name="lowerCase">是否小写</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.HashAlgorithmProvider.ComputeHash(System.String,System.String,System.Text.Encoding,System.Boolean)">
+            <summary>
+            使用指定类型的Hash算法计算字符串（指定编码）的Hash值
+            </summary>
+            <param name="alg">算法名称</param>
+            <param name="input">输入字符串</param>
+            <param name="encoding">字符编码</param>
+            <param name="lowerCase">是否小写</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.HashAlgorithmProvider.ComputeHash(System.String,System.Byte[],System.Boolean)">
+            <summary>
+            使用指定类型的Hash算法计算字节数组的Hash值
+            </summary>
+            <param name="alg">算法名称</param>
+            <param name="buffer">字节数组</param>
+            <param name="lowerCase">是否小写</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.HashAlgorithmProvider.ComputeHash(System.String,System.Byte[],System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            使用指定类型的Hash算法计算字节数组的Hash值
+            </summary>
+            <param name="alg">算法名称</param>
+            <param name="buffer">字节数组</param>
+            <param name="offset">开始位置</param>
+            <param name="count">长度</param>
+            <param name="lowerCase">是否小写</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.HashAlgorithmProvider.ComputeHash(System.String,System.IO.Stream,System.Boolean)">
+            <summary>
+            使用指定类型的Hash算法计算字节流的Hash值
+            </summary>
+            <param name="alg">算法名称</param>
+            <param name="stream">字节流</param>
+            <param name="lowerCase">是否小写</param>
+            <returns></returns>
+        </member>
+        <member name="T:LF.Toolkit.Common.DateTimeUtil">
+            <summary>
+            表示日期工具类
+            </summary>
+        </member>
+        <member name="F:LF.Toolkit.Common.DateTimeUtil.MinSqlDateTime">
+            <summary>
+            获取Sql数据库支持的最小时间点
+            </summary>
+        </member>
+        <member name="F:LF.Toolkit.Common.DateTimeUtil.MaxSqlDateTime">
+            <summary>
+            获取Sql数据库支持的最大时间点
+            </summary>
+        </member>
+        <member name="F:LF.Toolkit.Common.DateTimeUtil.UnixEpoch">
+            <summary>
+            获取Unix新纪元开始日期
+            </summary>
+        </member>
+        <member name="P:LF.Toolkit.Common.DateTimeUtil.Timestamp">
+            <summary>
+            获取当前时间对应的时间戳(总秒数)
+            </summary>
+        </member>
+        <member name="P:LF.Toolkit.Common.DateTimeUtil.UtcTimestamp">
+            <summary>
+            获取UTC当前时间对应的时间戳(总秒数)
+            </summary>
+        </member>
+        <member name="M:LF.Toolkit.Common.DateTimeUtil.GetTimestamp(System.DateTime)">
+            <summary>
+            转换指定时间的时间戳(总秒数)
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.DateTimeUtil.GetUtcTimestamp(System.DateTime)">
+            <summary>
+            转换指定时间的时间戳(总秒数)
+            </summary>
+            <param name="utcTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.DateTimeUtil.FromTimeStamp(System.Int64)">
+            <summary>
+            转换本地时间戳为本地日期(总秒数)
+            </summary>
+            <param name="timestamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.DateTimeUtil.FormUtcTimeStamp(System.Int64)">
+            <summary>
+            转换UTC时间戳为UTC日期(总秒数)
+            </summary>
+            <param name="utcTimestamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.DateTimeUtil.GetCurrentWeekRange(System.DateTime@,System.DateTime@)">
+            <summary>
+            获取当前日期的星期的开始日期和结束日期
+            </summary>
+            <param name="weekStart"></param>
+            <param name="weekEnd"></param>
+        </member>
+        <member name="M:LF.Toolkit.Common.DateTimeUtil.GetWeekRange(System.DateTime,System.DateTime@,System.DateTime@)">
+            <summary>
+            获取指定日期的星期的开始日期和结束日期
+            </summary>
+            <param name="weekday"></param>
+            <param name="weekStart"></param>
+            <param name="weekEnd"></param>
+        </member>
+        <member name="M:LF.Toolkit.Common.DateTimeUtil.GetCurrentMonthRange(System.DateTime@,System.DateTime@)">
+            <summary>
+            获取当前日期所在月份的开始日期和结束日期
+            </summary>
+            <param name="weekStart"></param>
+            <param name="weekEnd"></param>
+        </member>
+        <member name="M:LF.Toolkit.Common.DateTimeUtil.GetMonthRange(System.DateTime,System.DateTime@,System.DateTime@)">
+            <summary>
+            获取指定日期所在月份的开始日期和结束日期
+            </summary>
+            <param name="monthday"></param>
+            <param name="monthStart"></param>
+            <param name="monthEnd"></param>
+        </member>
+        <member name="T:LF.Toolkit.Common.RandomStringGenerator">
+            <summary>
+            表示随机字符串生成类
+            </summary>
+        </member>
+        <member name="M:LF.Toolkit.Common.RandomStringGenerator.CreateRandomAlphanumeric(System.Int32)">
+            <summary>
+            创建随机字母与数字字符串
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.RandomStringGenerator.CreateRandomLetters(System.Int32)">
+            <summary>
+            创建随机字母字符串
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.RandomStringGenerator.CreateRandomNumeric(System.Int32)">
+            <summary>
+            创建随机数字字符串
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LF.Toolkit.Common.AesAlgorithmProvider">
+            <summary>
+            表示Aes加密算法提供类
+            </summary>
+        </member>
+        <member name="M:LF.Toolkit.Common.AesAlgorithmProvider.TransformFinalBlock(System.Boolean,System.Byte[],System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            转换指定数组的制定区域
+            </summary>
+            <param name="encrypt">是否加密</param>
+            <param name="keys">密钥字节数组(128,192,256 bit)</param>
+            <param name="iv">初始化向量（可为空）</param> 
+            <param name="buffer">字节数组</param> 
+            <param name="mode">加密块密码模式</param>
+            <param name="padding">填充模式</param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.AesAlgorithmProvider.Encrypt(System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            使用默认初始化向量加密
+            </summary>
+            <param name="keys"></param>
+            <param name="buffer"></param>
+            <param name="mode"></param>
+            <param name="padding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.AesAlgorithmProvider.Encrypt(System.Byte[],System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            使用指定初始化向量加密
+            </summary>
+            <param name="keys"></param>
+            <param name="iv"></param>
+            <param name="buffer"></param>
+            <param name="mode"></param>
+            <param name="padding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.AesAlgorithmProvider.Encrypt(System.Text.Encoding,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            使用默认初始化向量加密
+            </summary>
+            <param name="encoding">编码方式</param>
+            <param name="key"></param>
+            <param name="text"></param>
+            <param name="mode"></param>
+            <param name="padding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.AesAlgorithmProvider.Encrypt(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            使用默认初始化向量加密（UTF-8编码）
+            </summary>
+            <param name="key"></param>
+            <param name="text"></param>
+            <param name="mode"></param>
+            <param name="padding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.AesAlgorithmProvider.Decrypt(System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            使用默认初始化向量解密
+            </summary>
+            <param name="keys"></param>
+            <param name="buffer"></param>
+            <param name="mode"></param>
+            <param name="padding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.AesAlgorithmProvider.Decrypt(System.Byte[],System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            使用指定始化向量解密
+            </summary>
+            <param name="keys"></param>
+            <param name="iv"></param>
+            <param name="buffer"></param>
+            <param name="mode"></param>
+            <param name="padding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.AesAlgorithmProvider.Decrypt(System.Text.Encoding,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            使用默认初始化向量解密
+            </summary>
+            <param name="encoding"></param>
+            <param name="keys"></param>
+            <param name="buffer"></param>
+            <param name="mode"></param>
+            <param name="padding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.StringProvider.IsNumberic(System.String)">
+            <summary>
+            判断字符串是否数字
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.StringProvider.IsHttpURL(System.String)">
+            <summary>
+            判断字符串是否合法的HTTP/HTTPS URL
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.StringProvider.SpiltToNumbers``1(System.String,System.String)">
+            <summary>
+            分割字符串并转成相应的数组
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="split"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.StringProvider.Parse``1(System.String,``0)">
+            <summary>
+            转换字符串为指定类型，若转换失败则返回默认值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.StringProvider.TryParse``1(System.String,``0@)">
+            <summary>
+            转换字符串为指定类型，并返回转换是否成功
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.XmlProvider.Deserialize``1(System.String,System.Action{``0})">
+            <summary>
+            反序列化xml文件为指定类型对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="fileName"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LF.Toolkit.Common.XmlProvider.Serialize``1(``0,System.String)">
+            <summary>
+            序列化指定对象到xml文件
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="fileName"></param>
+        </member>
+    </members>
+</doc>

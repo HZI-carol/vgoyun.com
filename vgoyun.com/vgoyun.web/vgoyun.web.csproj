@@ -1,0 +1,899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{79E3BB72-D3FE-4B4A-96A6-176B625677D9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>vgonyun.web</RootNamespace>
+    <AssemblyName>vgonyun.web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.0\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.2.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.8.1.3\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="LF.Toolkit.Common">
+      <HintPath>..\build\LF.Toolkit\LF.Toolkit.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="LF.Toolkit.Data.Dapper">
+      <HintPath>..\build\LF.Toolkit\LF.Toolkit.Data.Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="LF.Toolkit.IOC">
+      <HintPath>..\build\LF.Toolkit\LF.Toolkit.IOC.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="QRCoder, Version=1.3.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.5\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Solution Items\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="App_Start\WebConfigs.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attributes\FileResultAttribute.cs" />
+    <Compile Include="Controllers\SpaceController.cs" />
+    <Compile Include="Extensions\HttpRequestBaseExtensions.cs" />
+    <Compile Include="Common\JwtCommon.cs" />
+    <Compile Include="Common\Projections.cs" />
+    <Compile Include="Controllers\AdminApiController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WebApiController.cs" />
+    <Compile Include="Extensions\HttpPropertyKeys.cs" />
+    <Compile Include="Extensions\HttpRequestMessageExtension.cs" />
+    <Compile Include="Extensions\ValidatorProvider.cs" />
+    <Compile Include="Filters\ExceptionFilter.cs" />
+    <Compile Include="Filters\JweAuthenticationFilter.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\3d\index.css" />
+    <Content Include="css\animate.min.css" />
+    <Content Include="css\banner.css" />
+    <Content Include="css\banner\swiper-3.4.2.min.css" />
+    <Content Include="css\footer.css" />
+    <Content Include="css\hexagon.css" />
+    <Content Include="css\about.css" />
+    <Content Include="css\index.css" />
+    <Content Include="css\mediaelementplayer.min.css" />
+    <Content Include="css\module-qj.css" />
+    <Content Include="css\news.css" />
+    <Content Include="css\product.css" />
+    <Content Include="css\public.css" />
+    <Content Include="css\themes\merit-ico.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="images\1.jpg" />
+    <Content Include="images\2.jpg" />
+    <Content Include="images\3.jpg" />
+    <Content Include="images\3d\3D-logo.png" />
+    <Content Include="images\3d\3Dbanner1.jpg" />
+    <Content Include="images\4.jpg" />
+    <Content Include="images\5.jpg" />
+    <Content Include="images\6.jpg" />
+    <Content Include="images\about\1.jpg" />
+    <Content Include="images\about\2.jpg" />
+    <Content Include="images\about\3.15.jpg" />
+    <Content Include="images\about\3.jpg" />
+    <Content Include="images\about\4.jpg" />
+    <Content Include="images\about\5.jpg" />
+    <Content Include="images\about\6.jpg" />
+    <Content Include="images\about\about-banner-title.png" />
+    <Content Include="images\about\about-banner-title2.png" />
+    <Content Include="images\about\about-banner-title3.png" />
+    <Content Include="images\about\about-banner.jpg" />
+    <Content Include="images\about\banner1.png" />
+    <Content Include="images\about\hkbj.png" />
+    <Content Include="images\about\lxbj.png" />
+    <Content Include="images\about\partner\组46.png" />
+    <Content Include="images\about\partner\组47.png" />
+    <Content Include="images\about\partner\组48.png" />
+    <Content Include="images\about\partner\组49.png" />
+    <Content Include="images\about\partner\组50.png" />
+    <Content Include="images\about\partner\组51.png" />
+    <Content Include="images\about\partner\组52.png" />
+    <Content Include="images\about\partner\组53.png" />
+    <Content Include="images\about\partner\组54.png" />
+    <Content Include="images\about\partner\组55.png" />
+    <Content Include="images\about\partner\组56.png" />
+    <Content Include="images\about\partner\组57.png" />
+    <Content Include="images\about\partner\组58.png" />
+    <Content Include="images\about\partner\组59.png" />
+    <Content Include="images\about\partner\组60.png" />
+    <Content Include="images\about\partner\组61.png" />
+    <Content Include="images\about\partner\组62.png" />
+    <Content Include="images\about\partner\组63.png" />
+    <Content Include="images\about\ry1.png" />
+    <Content Include="images\about\ry10.png" />
+    <Content Include="images\about\ry9.png" />
+    <Content Include="images\about\VR百强企业.jpg" />
+    <Content Include="images\about\中国自主创新产品.jpg" />
+    <Content Include="images\about\中国行业十佳诚信企业.jpg" />
+    <Content Include="images\about\天使轮融资.jpg" />
+    <Content Include="images\about\未标题-15.png" />
+    <Content Include="images\about\福建省高薪技术企业.jpg" />
+    <Content Include="images\about\维构-商标.jpg" />
+    <Content Include="images\about\行业贡献奖.jpg" />
+    <Content Include="images\about\软件产品证书.jpg" />
+    <Content Include="images\about\软件企业证书.jpg" />
+    <Content Include="images\ad.jpg" />
+    <Content Include="images\add-1.png" />
+    <Content Include="images\add-2.png" />
+    <Content Include="images\add-3.png" />
+    <Content Include="images\add-bg.jpg" />
+    <Content Include="images\add-bg00.jpg" />
+    <Content Include="images\add-bg1.png" />
+    <Content Include="images\add-bg2.png" />
+    <Content Include="images\add-bg3.png" />
+    <Content Include="images\app.png" />
+    <Content Include="images\b1.jpg" />
+    <Content Include="images\banner-bg.jpg" />
+    <Content Include="images\banner-con-bg.png" />
+    <Content Include="images\banner-con-close.png" />
+    <Content Include="images\banner\banner000.jpg" />
+    <Content Include="images\banner\banner001.jpg" />
+    <Content Include="images\banner\banner002.jpg" />
+    <Content Include="images\banner\banner003.jpg" />
+    <Content Include="images\banner\banner004.png" />
+    <Content Include="images\blank.gif" />
+    <Content Include="images\columns-l.png" />
+    <Content Include="images\columns-r-bg.png" />
+    <Content Include="images\down-ico.png" />
+    <Content Include="images\ewm.jpg" />
+    <Content Include="images\ewm.png" />
+    <Content Include="images\ewm2.png" />
+    <Content Include="images\footer-bg.jpg" />
+    <Content Include="images\footer-ico.png" />
+    <Content Include="images\footer-logo.png" />
+    <Content Include="images\footer-r-bg.png" />
+    <Content Include="images\footer\1.png" />
+    <Content Include="images\footer\2.png" />
+    <Content Include="images\footer\3.png" />
+    <Content Include="images\footer\4.png" />
+    <Content Include="images\gg.jpg" />
+    <Content Include="images\gg.png" />
+    <Content Include="images\go-top\fk-1.png" />
+    <Content Include="images\go-top\fk.png" />
+    <Content Include="images\go-top\go-top-1.png" />
+    <Content Include="images\go-top\go-top.png" />
+    <Content Include="images\go-top\kf-1.png" />
+    <Content Include="images\go-top\kf.png" />
+    <Content Include="images\go-top\qq-1.png" />
+    <Content Include="images\go-top\qq.png" />
+    <Content Include="images\go-top\tel-1.png" />
+    <Content Include="images\go-top\tel.png" />
+    <Content Include="images\go-top\wx-1.png" />
+    <Content Include="images\go-top\wx.png" />
+    <Content Include="images\g_1.png" />
+    <Content Include="images\g_2.png" />
+    <Content Include="images\g_3.png" />
+    <Content Include="images\header-bg.jpg" />
+    <Content Include="images\header-logo-2.png" />
+    <Content Include="images\header-logo.png" />
+    <Content Include="images\hot.gif" />
+    <Content Include="images\hot.png" />
+    <Content Include="images\ico.png" />
+    <Content Include="images\index\bg.png" />
+    <Content Include="images\index\bg2.png" />
+    <Content Include="images\index\bn1.png" />
+    <Content Include="images\index\bn2.png" />
+    <Content Include="images\index\bn3.png" />
+    <Content Include="images\index\bn4.png" />
+    <Content Include="images\index\logo1.png" />
+    <Content Include="images\index\logo10.png" />
+    <Content Include="images\index\logo2.png" />
+    <Content Include="images\index\logo3.png" />
+    <Content Include="images\index\logo4.png" />
+    <Content Include="images\index\logo5.png" />
+    <Content Include="images\index\logo6.png" />
+    <Content Include="images\index\logo7.png" />
+    <Content Include="images\index\logo8.png" />
+    <Content Include="images\index\logo9.png" />
+    <Content Include="images\jt.png" />
+    <Content Include="images\logo-title-2.png" />
+    <Content Include="images\logo-title.png" />
+    <Content Include="images\module-merit\1-1.png" />
+    <Content Include="images\module-merit\1.png" />
+    <Content Include="images\module-merit\2-2.png" />
+    <Content Include="images\module-merit\2.png" />
+    <Content Include="images\module-merit\3-3.png" />
+    <Content Include="images\module-merit\3.png" />
+    <Content Include="images\module-merit\4-4.png" />
+    <Content Include="images\module-merit\4.png" />
+    <Content Include="images\module-merit\5-5.png" />
+    <Content Include="images\module-merit\5.png" />
+    <Content Include="images\module-merit\6-6.png" />
+    <Content Include="images\module-merit\6.png" />
+    <Content Include="images\module-merit\7-7.png" />
+    <Content Include="images\module-merit\7.png" />
+    <Content Include="images\module-merit\8-8.png" />
+    <Content Include="images\module-merit\8.png" />
+    <Content Include="images\module-merit\9-9.png" />
+    <Content Include="images\module-merit\9.png" />
+    <Content Include="images\module-qj\aaa.png" />
+    <Content Include="images\module-qj\al-banner-title.png" />
+    <Content Include="images\module-qj\al-banner.jpg" />
+    <Content Include="images\module-qj\al-erm.jpg" />
+    <Content Include="images\module-qj\al-img-bj.png" />
+    <Content Include="images\module-qj\al12.jpg" />
+    <Content Include="images\module-qj\al2.jpg" />
+    <Content Include="images\module-qj\al3.jpg" />
+    <Content Include="images\module-qj\al4.jpg" />
+    <Content Include="images\module-qj\al5.jpg" />
+    <Content Include="images\module-qj\al6.jpg" />
+    <Content Include="images\module-qj\al7.jpg" />
+    <Content Include="images\module-qj\al8.jpg" />
+    <Content Include="images\module-qj\al9.jpg" />
+    <Content Include="images\module-qj\an1.jpg" />
+    <Content Include="images\module-qj\buy-1.png" />
+    <Content Include="images\module-qj\buy-2.png" />
+    <Content Include="images\module-qj\buy-3.png" />
+    <Content Include="images\module-qj\buy-banner1.jpg" />
+    <Content Include="images\module-qj\buy-banner2.jpg" />
+    <Content Include="images\module-qj\buy-banner3.jpg" />
+    <Content Include="images\module-qj\buy-banner4.jpg" />
+    <Content Include="images\module-qj\buy-bg.jpg" />
+    <Content Include="images\module-qj\buy-d.png" />
+    <Content Include="images\module-qj\buy-ioc.png" />
+    <Content Include="images\module-qj\buy-q.png" />
+    <Content Include="images\module-qj\buy1.png" />
+    <Content Include="images\module-qj\buy2.png" />
+    <Content Include="images\module-qj\buy3.png" />
+    <Content Include="images\module-qj\buy4-l.png" />
+    <Content Include="images\module-qj\buy4-r.png" />
+    <Content Include="images\module-qj\buy4.png" />
+    <Content Include="images\module-qj\buy5.png" />
+    <Content Include="images\module-qj\buy6.png" />
+    <Content Include="images\module-qj\buy7.png" />
+    <Content Include="images\module-qj\buy8-b.png" />
+    <Content Include="images\module-qj\buy8-dy.png" />
+    <Content Include="images\module-qj\buy8-title.png" />
+    <Content Include="images\module-qj\buy8-v.png" />
+    <Content Include="images\module-qj\buy8.jpg" />
+    <Content Include="images\module-qj\buy8.png" />
+    <Content Include="images\module-qj\dhm1.png" />
+    <Content Include="images\module-qj\dhm2.png" />
+    <Content Include="images\module-qj\dhm3.png" />
+    <Content Include="images\module-qj\dhm4.png" />
+    <Content Include="images\module-qj\dhm5.png" />
+    <Content Include="images\module-qj\dhm6.png" />
+    <Content Include="images\module-qj\dhm7.png" />
+    <Content Include="images\module-qj\dz-1.png" />
+    <Content Include="images\module-qj\dz-2.png" />
+    <Content Include="images\module-qj\dz-3.png" />
+    <Content Include="images\module-qj\dz-4.png" />
+    <Content Include="images\module-qj\dz-5.png" />
+    <Content Include="images\module-qj\dz-6.png" />
+    <Content Include="images\module-qj\dz-7.png" />
+    <Content Include="images\module-qj\dz-banner-t.png" />
+    <Content Include="images\module-qj\dz-banner.jpg" />
+    <Content Include="images\module-qj\dz-tit.jpg" />
+    <Content Include="images\module-qj\dz1.png" />
+    <Content Include="images\module-qj\index1.webm" />
+    <Content Include="images\module-qj\index2.mp4" />
+    <Content Include="images\module-qj\module-qj-ico.png" />
+    <Content Include="images\module-qj\no.png" />
+    <Content Include="images\module-qj\pro-yx-14.jpg" />
+    <Content Include="images\module-qj\pro-yx-15.jpg" />
+    <Content Include="images\module-qj\pro-yx-16.jpg" />
+    <Content Include="images\module-qj\pro-yx-17.jpg" />
+    <Content Include="images\module-qj\pro-yx1.png" />
+    <Content Include="images\module-qj\pro-yx10.png" />
+    <Content Include="images\module-qj\pro-yx11.png" />
+    <Content Include="images\module-qj\pro-yx12.png" />
+    <Content Include="images\module-qj\pro-yx13.png" />
+    <Content Include="images\module-qj\pro-yx2.png" />
+    <Content Include="images\module-qj\pro-yx3.png" />
+    <Content Include="images\module-qj\pro-yx4.png" />
+    <Content Include="images\module-qj\pro-yx5.png" />
+    <Content Include="images\module-qj\pro-yx6.png" />
+    <Content Include="images\module-qj\pro-yx7.png" />
+    <Content Include="images\module-qj\pro-yx8.png" />
+    <Content Include="images\module-qj\pro-yx9.png" />
+    <Content Include="images\module-qj\qjhz_13.png" />
+    <Content Include="images\module-qj\qjhz_16.png" />
+    <Content Include="images\module-qj\qjhz_18.png" />
+    <Content Include="images\module-qj\ss.png" />
+    <Content Include="images\module-qj\yes.png" />
+    <Content Include="images\module-qj\yx-banner1.jpg" />
+    <Content Include="images\module-qj\yx-banner2.jpg" />
+    <Content Include="images\module-qj\dz-house.jpg" />
+    <Content Include="images\module-qj\dz-travel.jpg" />
+    <Content Include="images\module-qj\dz-hotel.jpg" />
+    <Content Include="images\module-qj\dz-food.jpg" />
+    <Content Include="images\nav_ioc-1.png" />
+    <Content Include="images\nav_ioc-10.png" />
+    <Content Include="images\nav_ioc-11.png" />
+    <Content Include="images\nav_ioc-12.png" />
+    <Content Include="images\nav_ioc-2.png" />
+    <Content Include="images\nav_ioc-3.png" />
+    <Content Include="images\nav_ioc-4.png" />
+    <Content Include="images\nav_ioc-7.png" />
+    <Content Include="images\nav_ioc-8.png" />
+    <Content Include="images\nav_ioc-9.png" />
+    <Content Include="images\nav_ioc1.png" />
+    <Content Include="images\nav_ioc10.png" />
+    <Content Include="images\nav_ioc11.png" />
+    <Content Include="images\nav_ioc12.png" />
+    <Content Include="images\nav_ioc2.png" />
+    <Content Include="images\nav_ioc3.png" />
+    <Content Include="images\nav_ioc4.png" />
+    <Content Include="images\nav_ioc7.png" />
+    <Content Include="images\nav_ioc8.png" />
+    <Content Include="images\nav_ioc9.png" />
+    <Content Include="images\new.gif" />
+    <Content Include="images\new.png" />
+    <Content Include="images\news\a.jpg" />
+    <Content Include="images\news\ad1.jpg" />
+    <Content Include="images\news\ad2.jpg" />
+    <Content Include="images\news\b.jpg" />
+    <Content Include="images\news\c.jpg" />
+    <Content Include="images\news\d.jpg" />
+    <Content Include="images\news\e.jpg" />
+    <Content Include="images\news\erm.jpg" />
+    <Content Include="images\news\f.jpg" />
+    <Content Include="images\news\g.jpg" />
+    <Content Include="images\news\news-banner1.jpg" />
+    <Content Include="images\news\news-banner2.jpg" />
+    <Content Include="images\news\news-con-img.jpg" />
+    <Content Include="images\news\news-ewm.jpg" />
+    <Content Include="images\news\news1.jpg" />
+    <Content Include="images\news\news2.jpg" />
+    <Content Include="images\news\news3.jpg" />
+    <Content Include="images\news\news4.jpg" />
+    <Content Include="images\news\news5.jpg" />
+    <Content Include="images\news\news6.jpg" />
+    <Content Include="images\news\news7.jpg" />
+    <Content Include="images\news\nr.png" />
+    <Content Include="images\news\share.png" />
+    <Content Include="images\next-1.png" />
+    <Content Include="images\next-2.png" />
+    <Content Include="images\partner-bg.jpg" />
+    <Content Include="images\partner-con-2.png" />
+    <Content Include="images\partner-con-bg.png" />
+    <Content Include="images\partner-con.png" />
+    <Content Include="images\plan1.jpg" />
+    <Content Include="images\plan2.jpg" />
+    <Content Include="images\pop-up-bg.png" />
+    <Content Include="images\pre-1.png" />
+    <Content Include="images\pre-2.png" />
+    <Content Include="images\product\1.png" />
+    <Content Include="images\product\11.png" />
+    <Content Include="images\product\12.png" />
+    <Content Include="images\product\13.png" />
+    <Content Include="images\product\14.png" />
+    <Content Include="images\product\15.png" />
+    <Content Include="images\product\16.png" />
+    <Content Include="images\product\17.png" />
+    <Content Include="images\product\18.png" />
+    <Content Include="images\product\2.png" />
+    <Content Include="images\product\21.png" />
+    <Content Include="images\product\22.png" />
+    <Content Include="images\product\23.png" />
+    <Content Include="images\product\24.png" />
+    <Content Include="images\product\25.png" />
+    <Content Include="images\product\26.png" />
+    <Content Include="images\product\27.png" />
+    <Content Include="images\product\28.png" />
+    <Content Include="images\product\3.png" />
+    <Content Include="images\product\4.png" />
+    <Content Include="images\product\5.png" />
+    <Content Include="images\product\6.png" />
+    <Content Include="images\product\banner-r.png" />
+    <Content Include="images\product\banner.jpg" />
+    <Content Include="images\product\cj1.jpg" />
+    <Content Include="images\product\cj2.jpg" />
+    <Content Include="images\product\cj3.jpg" />
+    <Content Include="images\product\cj4.jpg" />
+    <Content Include="images\product\lm-banner1.jpg" />
+    <Content Include="images\product\lm-banner2.jpg" />
+    <Content Include="images\product\m21.png" />
+    <Content Include="images\product\m21_1.png" />
+    <Content Include="images\product\m22.png" />
+    <Content Include="images\product\m22_1.png" />
+    <Content Include="images\product\m23.png" />
+    <Content Include="images\product\m23_1.png" />
+    <Content Include="images\product\m24.png" />
+    <Content Include="images\product\m24_1.png" />
+    <Content Include="images\product\m25.png" />
+    <Content Include="images\product\m25_1.png" />
+    <Content Include="images\product\m3.png" />
+    <Content Include="images\product\m4.png" />
+    <Content Include="images\product\m41.png" />
+    <Content Include="images\product\m5-1.png" />
+    <Content Include="images\product\m5-2.png" />
+    <Content Include="images\product\m5-3.png" />
+    <Content Include="images\product\m5-4.png" />
+    <Content Include="images\product\m5-5.png" />
+    <Content Include="images\product\m6-1.png" />
+    <Content Include="images\product\m6.png" />
+    <Content Include="images\product\product-merit\1-1.png" />
+    <Content Include="images\product\product-merit\1.png" />
+    <Content Include="images\product\product-merit\10-1.png" />
+    <Content Include="images\product\product-merit\10.png" />
+    <Content Include="images\product\product-merit\11-1.png" />
+    <Content Include="images\product\product-merit\11.png" />
+    <Content Include="images\product\product-merit\12-1.png" />
+    <Content Include="images\product\product-merit\12.png" />
+    <Content Include="images\product\product-merit\2-1.png" />
+    <Content Include="images\product\product-merit\2.png" />
+    <Content Include="images\product\product-merit\3-1.png" />
+    <Content Include="images\product\product-merit\3.png" />
+    <Content Include="images\product\product-merit\4-1.png" />
+    <Content Include="images\product\product-merit\4.png" />
+    <Content Include="images\product\product-merit\5-1.png" />
+    <Content Include="images\product\product-merit\5.png" />
+    <Content Include="images\product\product-merit\6-1.png" />
+    <Content Include="images\product\product-merit\6.png" />
+    <Content Include="images\product\product-merit\7-1.png" />
+    <Content Include="images\product\product-merit\7.png" />
+    <Content Include="images\product\product-merit\8-1.png" />
+    <Content Include="images\product\product-merit\8.png" />
+    <Content Include="images\product\product-merit\9-1.png" />
+    <Content Include="images\product\product-merit\9.png" />
+    <Content Include="images\product\product-merit\pro-ico.png" />
+    <Content Include="images\product\qj-1.png" />
+    <Content Include="images\product\qj-2.png" />
+    <Content Include="images\product\qj-3.png" />
+    <Content Include="images\product\qj-4.png" />
+    <Content Include="images\product\qj-bg.png" />
+    <Content Include="images\product\td-1.png" />
+    <Content Include="images\product\td-2.png" />
+    <Content Include="images\product\td-3.png" />
+    <Content Include="images\product\td-4.png" />
+    <Content Include="images\product\td-5.png" />
+    <Content Include="images\product\td-6.png" />
+    <Content Include="images\product\vr-systems.jpg" />
+    <Content Include="images\product\ys-bg.png" />
+    <Content Include="images\product\zc-1.png" />
+    <Content Include="images\product\zc-2.png" />
+    <Content Include="images\product\zc-3.png" />
+    <Content Include="images\profit-1.png" />
+    <Content Include="images\profit-2.png" />
+    <Content Include="images\profit-3.png" />
+    <Content Include="images\profit-4.png" />
+    <Content Include="images\profit-5.png" />
+    <Content Include="images\profit-bg.png" />
+    <Content Include="images\profit-bg1.png" />
+    <Content Include="images\profit-bg2.png" />
+    <Content Include="images\profit-bg3.png" />
+    <Content Include="images\profit-bg4.png" />
+    <Content Include="images\profit-bg5.png" />
+    <Content Include="images\select1.png" />
+    <Content Include="images\select2.png" />
+    <Content Include="images\select3.png" />
+    <Content Include="images\select4.png" />
+    <Content Include="images\select5.png" />
+    <Content Include="images\3d\3d-cp1.png" />
+    <Content Include="images\3d\3d-cp2.png" />
+    <Content Include="images\3d\3d-cp3.png" />
+    <Content Include="images\3d\3d-my1.png" />
+    <Content Include="images\3d\3d-my2.png" />
+    <Content Include="images\3d\3d-my3.png" />
+    <Content Include="images\3d\3d-pd-bj.png" />
+    <Content Include="images\3d\3d-pd.png" />
+    <Content Include="images\3d\3d-pd1.png" />
+    <Content Include="images\3d\3d-pd2.png" />
+    <Content Include="images\3d\3d-pd3.png" />
+    <Content Include="images\3d\3D-space.png" />
+    <Content Include="images\3d\ap1.png" />
+    <Content Include="images\3d\ap10.png" />
+    <Content Include="images\3d\ap11.png" />
+    <Content Include="images\3d\ap2.png" />
+    <Content Include="images\3d\ap3.png" />
+    <Content Include="images\3d\ap4.png" />
+    <Content Include="images\3d\ap5.png" />
+    <Content Include="images\3d\ap6.png" />
+    <Content Include="images\3d\ap7.png" />
+    <Content Include="images\3d\ap8.png" />
+    <Content Include="images\3d\ap9.png" />
+    <Content Include="images\spit.png" />
+    <Content Include="images\sx.png" />
+    <Content Include="images\tel.png" />
+    <Content Include="images\third.jpg" />
+    <Content Include="images\third_bg.jpg" />
+    <Content Include="images\tog-l.png" />
+    <Content Include="images\video\bigplay.png" />
+    <Content Include="images\video\bigplay.svg" />
+    <Content Include="images\video\controls.png" />
+    <Content Include="images\video\controls.svg" />
+    <Content Include="images\video\echo-hereweare.jpg" />
+    <Content Include="images\video\echo-hereweare.webm" />
+    <Content Include="images\video\loading.gif" />
+    <Content Include="js\about.js" />
+    <Content Include="js\banner\jquery.parallax.js" />
+    <Content Include="js\banner\png.js" />
+    <Content Include="js\banner\swiper-3.4.2.min.js" />
+    <Content Include="js\dateformat.js" />
+    <Content Include="js\jquery-2.2.4.min.js" />
+    <Content Include="js\mediaelement-and-player.js" />
+    <Content Include="js\public\public.js" />
+    <Content Include="js\vue-loading-overlay\vue-loading.min.css" />
+    <Content Include="js\vue-loading-overlay\vue-loading.min.js" />
+    <Content Include="js\vue.min.js" />
+    <Content Include="js\wow.min.js" />
+    <Content Include="m\01.jpg" />
+    <Content Include="m\03.jpg" />
+    <Content Include="m\04.jpg" />
+    <Content Include="m\animate.css" />
+    <Content Include="m\bg.jpg" />
+    <Content Include="m\ewm.jpg" />
+    <Content Include="m\iconfont.css" />
+    <Content Include="m\index.css" />
+    <Content Include="m\index.html" />
+    <Content Include="m\reset.css" />
+    <Content Include="m\zepto.min.js" />
+    <Content Include="samples\pano\index\index.html" />
+    <Content Include="samples\pano\index\panos\a.tiles\pano_b.jpg" />
+    <Content Include="samples\pano\index\panos\a.tiles\pano_d.jpg" />
+    <Content Include="samples\pano\index\panos\a.tiles\pano_f.jpg" />
+    <Content Include="samples\pano\index\panos\a.tiles\pano_l.jpg" />
+    <Content Include="samples\pano\index\panos\a.tiles\pano_r.jpg" />
+    <Content Include="samples\pano\index\panos\a.tiles\pano_u.jpg" />
+    <Content Include="samples\pano\index\panos\a.tiles\preview.jpg" />
+    <Content Include="samples\pano\index\panos\a.tiles\thumb.jpg" />
+    <Content Include="samples\pano\index\plugins\bingmaps.js" />
+    <Content Include="samples\pano\index\plugins\bingmaps.swf" />
+    <Content Include="samples\pano\index\plugins\combobox.xml" />
+    <Content Include="samples\pano\index\plugins\googlemaps.js" />
+    <Content Include="samples\pano\index\plugins\gyro2.js" />
+    <Content Include="samples\pano\index\plugins\scrollarea.js" />
+    <Content Include="samples\pano\index\plugins\scrollarea.swf" />
+    <Content Include="samples\pano\index\plugins\soundinterface.js" />
+    <Content Include="samples\pano\index\plugins\soundinterface.swf" />
+    <Content Include="samples\pano\index\plugins\videoplayer.js" />
+    <Content Include="samples\pano\index\plugins\videoplayer.swf" />
+    <Content Include="samples\pano\index\plugins\webvr.js" />
+    <Content Include="samples\pano\index\plugins\webvr.xml" />
+    <Content Include="samples\pano\index\plugins\webvr_cursor_80x80_17f.png" />
+    <Content Include="samples\pano\index\skin\rotate_device.png" />
+    <Content Include="samples\pano\index\skin\vtourskin.png" />
+    <Content Include="samples\pano\index\skin\vtourskin.xml" />
+    <Content Include="samples\pano\index\skin\vtourskin_design_117.xml" />
+    <Content Include="samples\pano\index\skin\vtourskin_design_117round.xml" />
+    <Content Include="samples\pano\index\skin\vtourskin_design_black.xml" />
+    <Content Include="samples\pano\index\skin\vtourskin_design_flat_light.xml" />
+    <Content Include="samples\pano\index\skin\vtourskin_design_glass.xml" />
+    <Content Include="samples\pano\index\skin\vtourskin_design_ultra_light.xml" />
+    <Content Include="samples\pano\index\skin\vtourskin_hotspot.png" />
+    <Content Include="samples\pano\index\skin\vtourskin_light.png" />
+    <Content Include="samples\pano\index\skin\vtourskin_mapspot.png" />
+    <Content Include="samples\pano\index\skin\vtourskin_mapspotactive.png" />
+    <Content Include="samples\pano\index\tour.js" />
+    <Content Include="samples\pano\index\tour.swf" />
+    <Content Include="samples\pano\index\tour.xml" />
+    <Content Include="samples\solution\smartscity\common\base.css" />
+    <Content Include="samples\solution\smartscity\common\main.css" />
+    <Content Include="samples\solution\smartscity\common\reset.css" />
+    <Content Include="samples\solution\smartscity\css\animate.min.css" />
+    <Content Include="samples\solution\smartscity\css\font\iconfont.css" />
+    <Content Include="samples\solution\smartscity\css\swiper.min.css" />
+    <Content Include="samples\solution\smartscity\images\error.png" />
+    <Content Include="samples\solution\smartscity\images\logo-gray.png" />
+    <Content Include="samples\solution\smartscity\images\logo.png" />
+    <Content Include="samples\solution\smartscity\images\logo2.png" />
+    <Content Include="samples\solution\smartscity\images\qrcode.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\advantage-arrow.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\advantage-bg.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\advantage1.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\advantage2.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\advantage3.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\advantage4.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\advantage5.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\advantage6.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\app.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\arrow-big.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\banner.jpg" />
+    <Content Include="samples\solution\smartscity\images\smart-city\convenient-bg.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\exact-bg.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include-bg.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include-line.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include1.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include10.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include2.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include3.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include4.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include5.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include6.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include7.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include8.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\include9.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\man.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\more-real1.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\more-real2.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\partner1-bg.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\partner1-icon.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\partner1.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\partner2-bg.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\partner2-icon.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\partner2.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\partner3-bg.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\partner3-icon.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\partner3.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\phone.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\process-line.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\prospect-bg.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\qrcode.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\real1.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\real2.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\real3.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\real4.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\real5.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\smart1.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\smart2.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\smart3.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\smart4.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\smart5.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\summarize-bg.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\title-advantage.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\title-function.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\title-include.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\title-partner.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\title-prospect.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\title-summarize.png" />
+    <Content Include="samples\solution\smartscity\images\smart-city\title-weapp.png" />
+    <Content Include="samples\solution\smartscity\js\index.js" />
+    <Content Include="samples\solution\smartscity\js\lib\jquery.1.9.1.min.js" />
+    <Content Include="samples\solution\smartscity\js\lib\swiper.min.js" />
+    <Content Include="samples\solution\smartscity\smart-city.css" />
+    <Content Include="samples\solution\smartscity\smart-city.html" />
+    <Content Include="samples\solution\smartscity\smart-city.js" />
+    <Content Include="samples\solution\legend\css\xzcss.css" />
+    <Content Include="samples\solution\legend\images\10,0,60,17474,235,235,9bc0cc5b.jpg" />
+    <Content Include="samples\solution\legend\images\10,0,70,22546,1798,1200,20220bb3.jpg" />
+    <Content Include="samples\solution\legend\images\10,0,83,22236,329,330,b79fbb7c.jpg" />
+    <Content Include="samples\solution\legend\images\10,0,94,21507,1800,1200,b3f1e6dc.jpg" />
+    <Content Include="samples\solution\legend\images\11,0,10,10975,364,363,0ed06f22.jpg" />
+    <Content Include="samples\solution\legend\images\12,0,84,3453,1799,1200,64f811f7.jpg" />
+    <Content Include="samples\solution\legend\images\12,0,96,24368,1800,1205,9d89261f.jpg" />
+    <Content Include="samples\solution\legend\images\13,0,90,2263,364,363,524f935d.jpg" />
+    <Content Include="samples\solution\legend\images\4,0,14,7302,329,329,02f14e5c.jpg" />
+    <Content Include="samples\solution\legend\images\9,0,15,15342,1800,1200,fd216341.jpg" />
+    <Content Include="samples\solution\legend\images\9,0,19,13803,260,260,52bbbd32.jpg" />
+    <Content Include="samples\solution\legend\images\9,0,71,12829,1800,1200,436da4a9.jpg" />
+    <Content Include="samples\solution\legend\images\code_pic.png" />
+    <Content Include="samples\solution\legend\images\icon_head.png" />
+    <Content Include="samples\solution\legend\images\index_adpic1_n.jpg" />
+    <Content Include="samples\solution\legend\images\index_city\city_bj.jpg" />
+    <Content Include="samples\solution\legend\images\index_city\city_cd.jpg" />
+    <Content Include="samples\solution\legend\images\index_city\city_cq_big.jpg" />
+    <Content Include="samples\solution\legend\images\index_city\city_gz_big.jpg" />
+    <Content Include="samples\solution\legend\images\index_city\city_sh.jpg" />
+    <Content Include="samples\solution\legend\images\vedio_1.png" />
+    <Content Include="samples\solution\legend\images\vedio_2.png" />
+    <Content Include="samples\solution\legend\images\xz_index.png" />
+    <Content Include="samples\solution\legend\index.html" />
+    <Content Include="samples\solution\legend\js\jquery.js" />
+    <Content Include="samples\solution\legend\js\lazyload.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="images\ico.psd" />
+    <Content Include="images\module-qj\module-qj-ico.psd" />
+    <Content Include="images\草稿ico.psd" />
+    <Content Include="NLog.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Home\Case.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\Buy.cshtml" />
+    <Content Include="Views\Home\Solution.cshtml" />
+    <Content Include="Views\Home\Information.cshtml" />
+    <Content Include="Views\Home\ProductAdSense.cshtml" />
+    <Content Include="Views\Home\ProductSales.cshtml" />
+    <Content Include="Views\Home\SystemCustomize.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\vgoyun.common\vgoyun.common.csproj">
+      <Project>{08950d47-78f6-4ac0-8da9-448ad1f8edd6}</Project>
+      <Name>vgoyun.common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\vgoyun.dal\vgoyun.dal.csproj">
+      <Project>{3e9a7e21-9aab-4ead-9a81-4ca9a7d4886c}</Project>
+      <Name>vgoyun.dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\vgoyun.idal\vgoyun.idal.csproj">
+      <Project>{5a043a04-dba8-424b-92d9-ebed6eae8e22}</Project>
+      <Name>vgoyun.idal</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Views\Home\InformationDetail.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_SpaceHeader.cshtml" />
+    <Content Include="Views\Space\Index.cshtml" />
+    <Content Include="Views\Space\Product.cshtml" />
+    <Content Include="Views\Space\SpaceCase.cshtml" />
+    <Content Include="Views\Space\Industry.cshtml" />
+    <Content Include="Views\Space\ViewSpaceCase.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59359</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59359/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

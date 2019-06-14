@@ -1,0 +1,35 @@
+﻿<!--头部logo和导航-->
+<div class="header-top">
+    <div class="gx-no">
+        <div class="number">国家高新技术企业编号 ：GR201835000618</div>
+        <div class="hotline">系统购买热线：400-0058-720</div>
+    </div>
+    <div class="header-wrap" id="header-wrap">
+        <div class="head-module">
+            <div class="head-logo">
+                <a href="/">
+                    <img src="/images/header-logo.png" alt="" style="width:200px;">
+                </a>
+            </div>
+            <div class="head-nav threed-nav">
+                <ul>
+                    <li class="@(ViewBag.ActiveMenu == "Index" ? "active" : "")" style="padding: 0">
+                        <a href="/3d" style="width:6em;">首页</a>
+                    </li>
+                    <li class="@(ViewBag.ActiveMenu == "Product" ? "active" : "")">
+                        <a href="/3d/product">产品介绍</a>
+                    </li>
+                    <li class="@(ViewBag.ActiveMenu == "Industry" ? "active" : "")">
+                        <a href="/3d/industry">行业前景</a>
+                    </li>
+                    <li class="@(ViewBag.ActiveMenu == "SpaceCase" ? "active" : "")">
+                        <a href="/3d/space">3D空间</a>
+                    </li>
+                    <li>
+                        <a href="/">返回主站</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

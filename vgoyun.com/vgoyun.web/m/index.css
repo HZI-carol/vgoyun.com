@@ -1,0 +1,395 @@
+
+html,body{
+    width: 100%;
+    overflow-x: hidden;
+    font-size: 14px;
+}
+.red{
+    color:red;
+}
+.big{
+    font-size: 28px;
+}
+
+#header{
+    width: 375px;
+}
+#header .h-img{
+    width: 100%;
+    height: 600px;
+}   
+#header .h-img img{
+    width: 100%;
+    height: 100%;
+}   
+#header .h-list{
+    width: 100%;
+    height: 100px;
+    background: rgb(1,66, 132);
+}
+#header .h-list ul{
+    width: 95%;
+    height: 100%;
+    /* margin: 0 auto; */
+}
+#header .h-list ul li{
+    float: left;
+    width: 68px;
+    height: 68px;
+    margin-left: 3px;
+    border-radius: 50%;
+    background: rgb(250,88,88);
+}
+#header .h-list ul li .ll{
+    width: 100%;
+    height: 34px;
+    font-weight: 600;
+    line-height: 17px;
+    margin-top: 17px;
+    color: #fff;
+    text-align: center;
+}
+#header .h-list ul li > p{
+    font-weight: 600;
+    line-height: 68px;
+    color: #fff;
+    text-align: center;
+}
+
+#form{
+    width: 375px;
+    background: #fff;
+}
+#form form{
+    padding: 0 20px;
+}
+#form .label{
+    font-size: 18px;
+    line-height: 36px;
+}
+#form .text{
+    width: 100%;
+    height: 40px;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+    text-indent: 10px;
+}
+#form p{
+    font-size: 18px;
+    line-height: 36px;
+}
+#form .box{
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+#form .boxl{
+    font-size: 18px;
+    display: inline-block;
+    height: 20px;
+    vertical-align: middle;
+}
+#form .btn{
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    line-height: 50px;
+    color: #fff;
+    background: rgb(250,88,88);
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    outline: none;
+}
+#form .ripple {
+    position: relative;
+    overflow: hidden;
+}    
+#form .ripple:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .3s, opacity .5s;
+}   
+#form .ripple:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+}   
+
+#main{
+    width: 375px;
+    background: rgb(7,39,78);   
+}
+#main .h{
+    font-size: 24px;
+    margin: 20px 0;
+    text-indent: 25px;
+    letter-spacing: 8px;
+    font-weight: 600;
+    color: rgb(100,224,240);
+}
+#main .mh{
+    color: rgb(100,224,240);
+    position: relative;
+    /* background: rgb(11,61,112); */
+}
+#main .mh .h{
+    padding-top: 10px;
+    text-indent: 35px;
+}
+#main .mh p{
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    text-indent: 10px
+}
+#main .mh .mh-img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 117px;
+    height: 137px;
+}
+#main .mh .mh-img img{
+    width: 100%;
+    height: 100%;
+}
+#main .mc{
+    /* padding: 0 20px; */
+    padding: 0 30px 0 20px;
+}
+#main .mc h2{
+    text-indent: 15px;
+}
+#main .mc p{
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+#main .mc .title{
+    width: 25%;
+    height: 25px;
+    line-height: 25px;
+    margin: 10px auto;
+    background: rgb(77,234,239);
+    color: rgb(7,39,78);
+}
+#main .md{
+    /* padding: 0 20px; */
+    padding: 0 30px 0 20px;
+}
+
+#main .md .pt{
+    font-size: 16px;
+    line-height: 26px;
+    color: rgb(100,224,240);
+}
+#main .md .h{
+    text-indent: 15px;
+}
+#main .md p{
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+#main .md .md-img{
+    margin: 15px 0;
+    width: 100%;
+}
+#main .md .md-img img{
+    width: 100%;
+    height: 100%;
+}
+#main .me{
+    margin-top: 30px;
+    /* padding: 0 20px; */
+    padding: 0 30px 0 20px;
+    color: rgb(100,224,240);
+    padding-bottom: 80px;
+}
+#main .me .me-header{
+    text-align: center;
+}
+#main .me .me-header p{
+    font-size: 12px;
+    letter-spacing: -1px;
+}
+
+#main .me .me-header h2{
+    font-size: 22px;
+}
+#main .me .me-text p{
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-indent: 28px;
+    line-height: 22px;
+    text-align:justify;
+    text-justify:inter-ideograph;
+}
+#main .me .me-img{
+    margin-top: 15px;
+    width: 100%;
+}
+#main .me .me-img img{
+    width: 100%;
+    height: 100%;
+}
+#main .me .end{
+    text-align: center;
+    color: #ccc;
+    font-size: 14px;
+    width: 100%;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+#main .me .foot{
+    clear:both;
+    margin-top:20px;
+}
+
+#main .me .center{
+    text-align: center;
+}
+
+#footerBar{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 375px;
+    height: 60px;
+    border: 1px solid #eee;
+}
+#footerBar .left,#footerBar .right{
+    float: left;
+}
+#footerBar .left{
+    width: 30%;
+    height: 100%;
+    background: #fff;
+    text-align: center;
+}
+#footerBar .left .icon{
+    margin-top: 5px;
+}
+#footerBar .left .icon .dianhua{
+    font-size: 24px;        
+}
+#footerBar .left p{
+    font-size: 18px;
+}
+#footerBar .right{
+    width: 70%;
+    height: 100%;
+    background: rgb(250,88,88);
+    text-align: center;
+    line-height: 60px;
+}
+#footerBar .right a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;       
+}
+#footerBar .right a:hover{
+    text-decoration: none;
+}
+#footerBar .right a .tijiao{
+    font-size: 24px;
+}
+#footerBar .right a span{
+    font-size: 18px;
+}
+
+@media screen and (max-width:320px){
+    #header,#form,#main,#footerBar{
+        width: 320px;
+        margin: 0 auto;
+    }
+    #header .h-list{
+        height: 70px;
+    }
+    #header .h-list ul li{
+        width: 56px;
+        height: 56px;
+    }
+    #header .h-list ul li .ll{
+        height: 28px;
+        line-height: 14px;
+        margin-top: 14px;
+    }
+    #header .h-list ul li > p{
+        line-height: 56px;
+    }
+    #form .box{
+        width: 16px;
+        height: 16px;
+        margin-left: 3px;
+    }
+    #form .boxl{
+        font-size: 16px;
+        height: 20px;
+    }
+    #main .mh .mh-img{
+        width: 65px;
+        height: 90px;
+    }
+}
+
+@media screen and (max-width:2000px) and (min-width:376px){
+    #header,#form,#main{
+        width: 414px;  
+        margin: 0 auto;   
+    }
+    #footerBar{
+        width: 414px;
+        left: 50%;
+        margin-left: -208px;
+    }
+    #header .h-list ul li{
+        width: 75px;
+        height: 75px;
+    }
+    #header .h-list ul li .ll{
+        height: 38px;
+        line-height: 19px;
+        margin-top: 19px;
+    }
+    #header .h-list ul li > p{
+        line-height: 75px;
+    }
+    #form .box{
+        width: 18px;
+        height: 18px;
+        margin-left: 3px;
+    }
+    #form .boxl{
+        font-size: 18px;
+        height: 20px;
+    }
+    #main .mh .mh-img{
+        width: 105px;
+        height: 130px;
+    }
+}
+@media screen and (max-width:2000px) and (min-width:769px){
+    #footerBar{
+        margin-left: -216px;
+    }
+}

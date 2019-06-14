@@ -1,0 +1,130 @@
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.app-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1100;
+  display: flex;
+  justify-content: space-between;
+  background-color: #409EFF;
+
+  .title {
+    font-size: 18px;
+    max-width: 240px;
+    padding-right: 20px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+  }
+
+  .account {
+    //position: fixed;
+    //right: 20px;
+    line-height: 60px
+  }
+}
+
+.app-main {
+  padding-top: 60px !important;
+  padding-bottom: 10px;
+  min-height: calc(100vh - 45px);
+
+  .breadcrumb {
+    padding: 20px 0;
+  }
+}
+
+.app-footer {
+  //position: fixed;
+  //bottom: 0;
+  text-align: left;
+  margin-left: 1em;
+  font-size: .8em;
+  padding: 1em 0 !important;
+}
+
+.dialog-body {
+  padding-top: 60px;
+}
+
+.page, .dialog-body {
+
+  .searchbar {
+    display: flex;
+  }
+
+  .datagrid {
+    margin-top: 1em;
+
+    a {
+      text-decoration: none !important;
+    }
+
+    .table-expand {
+      font-size: 0;
+    }
+
+    .table-expand label {
+      text-align: right;
+      width: 120px;
+      color: #99a9bf;
+    }
+
+    .table-expand .el-form-item {
+      margin-right: 0;
+      margin-bottom: 0;
+      width: 50%;
+    }
+
+    .table-expand .el-form-item .el-form-item__content {
+      width: calc(100% - 150px);
+    }
+  }
+
+  .pagination {
+    margin-top: 1em;
+    text-align: right;
+  }
+
+  .edit-form {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  img {
+    cursor: pointer;
+  }
+}
+
+.mini-size-messagebox {
+  width: 240px;
+}
+
+.dialog-body {
+  padding-top: 0;
+
+  .datagrid {
+    margin-top: 0;
+
+    .table-expand .el-form-item {
+      margin-right: 0;
+      margin-bottom: 0;
+      width: 100%;
+    }
+  }
+}
+
+//富文本内容预览图片样式(ueditor)
+.edui-default img {
+  max-width: 95%;
+}
+
+//富文本内容预览图片样式
+.editor-content img {
+  max-width: 95%;
+}
